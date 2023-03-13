@@ -25,6 +25,7 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{float}
+\usepackage[export]{adjustbox}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -78,6 +79,11 @@ about 53940 round-cut diamonds with ten features:
     \texttt{price} & price in US dollars (\$326-\$18,823)
 \end{tabular}
 \end{table}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection*{Question 1.1}
 \begin{figure}[H]
     \centering
    \includegraphics[width=0.5\linewidth]{../Figures/Question-1/datasetCorrHeatmap.png}
@@ -85,8 +91,15 @@ about 53940 round-cut diamonds with ten features:
    \label{fig:corr_hm}
 \end{figure}
 
+We will be using the nine features to predict the \texttt{price}. We can begin by 
+computing the Pearson correlation matrix heatmap for these features in 
+the dataset in Figure 1. The values for correlation for \texttt{price} is given in 
+Table 1(a). We see that, unsurprisingly, there is a massive collection of high 
+correlation squares at the bottom right. These indicate high Pearson 
+correlation coefficient between \texttt{price} and \texttt{x}, \texttt{y}, 
+\ texttt{z}. This suggests that 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{table}[H]
 \begin{subtable}[H]{0.45\textwidth}
@@ -127,8 +140,7 @@ about 53940 round-cut diamonds with ten features:
     \caption{Pearson Correlation Coefficients}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-We will be using the nine features to predict the price. We can begin by 
-computing the Pearson correlation matrix heatmap for these features in 
+
 
 
 
