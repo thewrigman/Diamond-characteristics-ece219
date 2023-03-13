@@ -33,6 +33,7 @@ def qualtoquan(data):
         df['color'].replace(colorLabels[i],len(colorLabels)-i,inplace=True)
     return df
 
+
 def scaledTrainTest(data, ts=0.1):
     train, test = train_test_split(data,test_size=ts)
 
@@ -48,6 +49,7 @@ def scaledTrainTest(data, ts=0.1):
     y_test = test['price']
 
     return X_train, X_test, y_train, y_test
+
 
 def plotMutualInformation(X_train, y_train):
     f1 = SelectKBest(score_func=mutual_info_regression, k='all')
@@ -71,8 +73,5 @@ def plotMutualInformation(X_train, y_train):
     for i in range(len(f2.scores_)):
         print(f"{X_train.columns[i]}: {f2.scores_[i]}")
     return f1,f2
-
-    
-
 
 
