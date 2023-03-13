@@ -31,7 +31,11 @@ def qualtoquan(data):
     colorLabels = (list(string.ascii_uppercase[3:10]))
     for i in range (len(colorLabels)):
         df['color'].replace(colorLabels[i],len(colorLabels)-i,inplace=True)
-    return df
+
+    ppc = df.copy()
+    ppcarat = ppc['price']/ppc['carat']
+    ppc.insert(0,'ppc', ppcarat)
+    return df, ppc
 
 
 def scaledTrainTest(data, ts=0.1):
@@ -73,5 +77,3 @@ def plotMutualInformation(X_train, y_train):
     for i in range(len(f2.scores_)):
         print(f"{X_train.columns[i]}: {f2.scores_[i]}")
     return f1,f2
-
-
