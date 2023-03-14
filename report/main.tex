@@ -41,7 +41,7 @@
 \begin{center}
     \begin{minipage}{10cm}
     	\begin{center}
-    	\textbf{\large Project 4}\\[0.1cm]
+    	\textbf{\large Project 4 Regression Analysis}\\[0.1cm]
         \textbf{Inesh Chakrabarti, Lawrence Liu, Nathan Wei}\\[0.1cm]
     	\end{center}
     \end{minipage}\hfill
@@ -140,7 +140,7 @@ The values for correlation for \texttt{price} is given in
 Table 1(a). We see that, unsurprisingly, there is a massive collection of high 
 correlation squares at the bottom right. These indicate high Pearson 
 correlation coefficient between \texttt{price} and \texttt{x}, \texttt{y}, 
-\ texttt{z}. Similarily, there is also a high correlation with \texttt{carat}.
+\texttt{z}. Similarily, there is also a high correlation with \texttt{carat}.
 All of these suggest that the size of the diamond itself is the most significant 
 predictor as to its price. \\
 
@@ -292,16 +292,14 @@ score.
 
 It is clear by observation from Figure 3 and Table 2 that the lowest mutual 
 information is present in \texttt{depth} and \texttt{table}. It is also 
-important to note that the mutual information in cut is also very small. This 
-makes sense as we saw earlier that the Pearson correlation coefficient for 
+important to note that the mutual information in \texttt{cut} is also very small. 
+This makes sense as we saw earlier that the Pearson correlation coefficient for 
 \texttt{cut} with respect to price per carat was almost zero. Similarily, the 
 Pearson correlation coefficients for depth and table were very close to zero. \\
 
 From this point, we will be testing the regression models without these three 
 features, and with these three features and comparing the performance to 
 determine the general performance.
-
-DONT FORGET TO DO THIS!!!
 
 \section*{Regression Models}
 \subsection*{Linear Regression}

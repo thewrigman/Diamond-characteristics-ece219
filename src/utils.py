@@ -2,6 +2,7 @@ import numpy as np
 import sys
 import pandas as pd
 import string
+from scipy import stats
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
@@ -11,12 +12,27 @@ from sklearn.feature_selection import f_regression
 ################################################################################
 sys.path.append("../project_data")
 
-
-def loadData(filePath="../project_data/diamonds.csv"):
+def loadData(filePath="../project_data/diamonds.csv", quant = False, \
+             unSkew = False, remCols = 0):
     df = pd.read_csv(filePath)
     df.drop(columns=["Unnamed: 0"],inplace=True) 
+    if quant:
+        df, ppc = qualtoquan(df)
+    mutualInformationRanking = ['depth','table','cut','color','clarity',\
+                                'z','x','y','carat']
+    df.drop(columns=mutualInformationRanking[0:remCols], inplace=True)
+    print(mutualInformationRanking[0:remCols])
+    if unSkew:
+        df = deSkew(df)
     return df
 
+def scaleTrainTest(X_train, X_test):
+    scaler = StandardScaler()
+    xtrain = pd.DataFrame(scaler.fit_transform(X_train), \
+                          columns = X_train.columns)
+    xtest = pd.DataFrame(scaler.transform(X_test), \
+                          columns = X_train.columns)
+    return X_train, X_test
 
 def qualtoquan(data):
     df = data.copy(deep=True)
@@ -37,6 +53,29 @@ def qualtoquan(data):
     ppc.insert(0,'ppc', ppcarat)
     return df, ppc
 
+def deSkew(data):
+    methods = ["Sqrt", "boxcox", "No Change", "log"]
+    processedDF = data.copy()
+    for x in data.columns:
+        if (x == 'cut' or x == 'color' or x == 'clarity'):
+            processedDF[x] = data[x]
+            print(f"{x}: Categorical")
+            continue
+        if (np.abs(data[x].skew()) < 0.5):
+            print(f"{x}: No Change")
+            continue
+        logN = np.log(data[x])
+        sqrtN = np.sqrt(data[x])
+        boxcoxN = pd.Series(stats.boxcox(data['carat'])[0])
+        Ns = [sqrtN, boxcoxN, data['x'], logN ]
+        Skews = [sqrtN.skew(), boxcoxN.skew(),data[x].skew(),logN.skew()]
+        bestSkew = min(Skews)
+        bestMethod = Skews.index(bestSkew)
+        processedDF[x] = Ns[bestMethod]
+        print(f"{x}: {bestSkew}: {methods[bestMethod]}")
+        processedDF['price'] = data['price']
+    return processedDF
+
 
 def scaledTrainTestSplit(data, ts=0.1):
     train, test = train_test_split(data,test_size=ts)
@@ -53,43 +92,3 @@ def scaledTrainTestSplit(data, ts=0.1):
     y_test = test['price']
 
     return X_train, X_test, y_train, y_test
-
-def scaleTrainTest(X_train, X_test):
-    scaler = StandardScaler()
-    xtrain = pd.DataFrame(scaler.fit_transform(X_train), \
-                          columns = X_train.columns)
-    xtest = pd.DataFrame(scaler.transform(X_test), \
-                          columns = X_train.columns)
-    return X_train, X_test
-
-
-def plotMutualInformation(X_train, X_test, y_train):
-    f1 = SelectKBest(score_func=mutual_info_regression, k='all')
-    f1.fit(X_train, y_train)
-    f2 = SelectKBest(score_func=f_regression, k='all')
-    f2.fit(X_train, y_train)
-
-    fig, axs = plt.subplots(2)
-    fig.set_figheight(8)
-    fig.set_figwidth(16)
-    axs[0].bar(X_train.columns, f1.scores_)
-    axs[0].set_title("Mutual Information")
-    axs[1].bar(X_train.columns, f2.scores_)
-    axs[1].set_title("F Scores")
-    fig.tight_layout()
-
-
-    print("Mutual Information")
-    for i in range(len(f1.scores_)):
-        print(f"{X_train.columns[i]}: {f1.scores_[i]}")
-    print("___________________________________________")
-    print("F Scores")
-    for i in range(len(f2.scores_)):
-        print(f"{X_train.columns[i]}: {f2.scores_[i]}")
-
-    xtrain = X_train.drop(columns=['cut','depth','table'])
-    xtest = X_test.drop(columns=['cut','depth','table'])
-
-    return f1,f2, xtrain, xtest, 
-
-
