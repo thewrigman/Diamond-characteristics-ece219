@@ -94,9 +94,16 @@ about 53940 round-cut diamonds with ten features:
 
 We will be using the nine features to predict the \texttt{price}. We can begin by 
 computing the Pearson correlation matrix heatmap for these features in 
-the dataset in Figure 1. Begin by noting that we assigned quantitative values to
+the dataset in Figure 1. Note that a pearson correlation coefficient $r$ is 
+defined as such:
+\begin{equation}
+r=\dfrac{\sum_i \left(x_i-\bar{x}\right)\left(y_i-\bar{y}\right)}{\sqrt{
+\sum_i\left(x_i-\bar{x}\right)^2\sum_i\left(y_i-\bar{y}\right)^2
+}}
+\end{equation}
+We have assigned quantitative values to
 the qualitative labels \texttt{cut},\texttt{color},\texttt{clarity} as ascending 
-natural numbers based on ideality.\\
+natural numbers based on ideality.
 
 \begin{table}[H]
     \begin{subtable}[H]{0.45\textwidth}
