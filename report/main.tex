@@ -102,7 +102,7 @@ natural numbers based on ideality.\\
     \begin{subtable}[H]{0.45\textwidth}
         \begin{tabular}{c l}
             \hline
-            \multicolumn{2}{c}{Correlation}         \\
+            Feature & \multicolumn{1}{c}{Correlation}         \\
             \hline 
         \texttt{carat}   & 0.9215914337868304    \\
         \texttt{cut}     & -0.05349263851362828  \\
@@ -112,14 +112,14 @@ natural numbers based on ideality.\\
         \texttt{table}   & 0.12713358133531918   \\
         \texttt{x}       & 0.8844357793744166    \\
         \texttt{y}       & 0.865421694764742     \\
-        \texttt{z}       & 0.861250266123968    \\
+        \texttt{z}       & 0.861250266123968    
         \end{tabular}
         \caption{Price}
         \end{subtable}
         \begin{subtable}[H]{0.45\textwidth}
             \begin{tabular}{c l}
                 \hline
-                \multicolumn{2}{c}{Correlation}         \\
+                Feature & \multicolumn{1}{c}{Correlation}         \\
                 \hline 
             \texttt{carat}   & 0.7694571626172851    \\
             \texttt{cut}     & 0.00542011950342582   \\
@@ -129,8 +129,7 @@ natural numbers based on ideality.\\
             \texttt{table}   & 0.08458507638109278   \\
             \texttt{x}       & 0.7873455524189906    \\
             \texttt{y}       & 0.7717301198408058    \\
-            \texttt{z}       & 0.7655421629234554   \\
-        
+            \texttt{z}       & 0.7655421629234554   
             \end{tabular}
             \caption{Price per Carart}
         \end{subtable}
@@ -160,7 +159,7 @@ corresponding values in Table 1(a) negative.
     \centering
     \begin{tabular}{c l}
         \hline
-        Feature & Skewness \\
+        Feature & \multicolumn{1}{c}{Skewness} \\
         \hline
         \texttt{carat} & 1.116645920812613  \\ \
         \texttt{depth} & -0.08229402630189467 \\ \
@@ -175,7 +174,7 @@ corresponding values in Table 1(a) negative.
         \centering
         \begin{tabular}{c c l}
             \hline
-            Feature & Method & Skewness \\
+            Feature & Method & \multicolumn{1}{c}{Skewness} \\
             \hline
             \texttt{carat} & Box Cox & 0.020450070764268666 \\ \
             \texttt{depth} & No Change & -0.08229402630189467 \\ \
@@ -184,7 +183,7 @@ corresponding values in Table 1(a) negative.
            \texttt{y} & Box Cox & 0.020450070764268666  \\ \
             \texttt{z} & Square Root & 0.0139742634447758  \\ \
         \end{tabular}
-        \caption{Before Processing}
+        \caption{After Processing}
         \end{subtable}
     \caption{Skewness of Features}
 \end{table}
@@ -193,14 +192,14 @@ corresponding values in Table 1(a) negative.
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../Figures/Question-1/datasetHist.png}
+        \includegraphics[width=\textwidth]{../Figures/Question-1/featureprehist.png}
         \caption{Before Processing}
         \label{fig:clarityBox}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../Figures/Question-1/datasetHist.png}
+        \includegraphics[width=\textwidth]{../Figures/Question-1/featureposthist.png}
         \caption{After Processing}
         \label{fig:colorBox}
     \end{subfigure}
@@ -208,7 +207,21 @@ corresponding values in Table 1(a) negative.
        \label{fig:boxPlots}
 \end{figure}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Now, we examine the frequency distributions within each feature. We find that 
+some of our numerical features are somewhat skewed—apparent from Table 2(a) and
+Figure 2(a). We target a skewness less than $0.5$, as this would imply that the 
+distribution is somewhat symetric. As such, we try three different methods: 
+square-root, logrithm, and box-cox transformation. The first two are somewhat
+self-explanatory; box-cox uses a non-zero value of $\lambda$ and conducts the
+following transformation:
+\begin{equation}
+y_{\lambda}^{'} = \dfrac{y^{\lambda}-1}{\lambda \cdot \bar{g}_y^{\lambda-1}}
+\end{equation}
+where $\bar{g}_y$ is defined as the geometric mean of $y$. \\
+We next try all of these methods, along with no transformatino, and take the 
+minimum to try to minimize skewness in our data. The results are shown in Table 
+2(b) and Figure 2(b).
 
 
 \subsubsection*{Question 1.3}
@@ -244,8 +257,8 @@ We see that idek what the fuck we see bro??
 \subsubsection*{Question 2.1}
 Now, before we train our regression models, we begin by splitting our data into 
 training and testing sets. As such, we must now standardize the feature columns.
-The function used to do this, \texttt{scaledTrainTest()}, can be found in 
-\texttt{utils.py}.
+The function used to do this, \texttt{scaledTrainTest()}, as well as \texttt{
+scaledTrainTestSplit()} can be found in \texttt{utils.py}.
 
 \subsubsection*{Question 2.2}
 Next, we begin with feature selection. We note that some of the features may not

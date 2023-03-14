@@ -91,3 +91,5 @@ def plotMutualInformation(X_train, X_test, y_train):
     xtest = X_test.drop(columns=['cut','depth','table'])
 
     return f1,f2, xtrain, xtest, 
+
+
