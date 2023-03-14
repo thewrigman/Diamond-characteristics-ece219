@@ -15,7 +15,7 @@ if __name__ == '__main__':
 
     f = open("linregLogs.txt", "a")
 
-    remColsGrid = [5,2,0]
+    remColsGrid = [0]
 
     kf = StratifiedKFold(n_splits=10, shuffle=False)
 
