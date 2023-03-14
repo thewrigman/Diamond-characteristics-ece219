@@ -38,7 +38,7 @@ def qualtoquan(data):
     return df, ppc
 
 
-def scaledTrainTest(data, ts=0.1):
+def scaledTrainTestSplit(data, ts=0.1):
     train, test = train_test_split(data,test_size=ts)
 
     scaler = StandardScaler()
@@ -54,14 +54,24 @@ def scaledTrainTest(data, ts=0.1):
 
     return X_train, X_test, y_train, y_test
 
+def scaleTrainTest(X_train, X_test):
+    scaler = StandardScaler()
+    xtrain = pd.DataFrame(scaler.fit_transform(X_train), \
+                          columns = X_train.columns)
+    xtest = pd.DataFrame(scaler.transform(X_test), \
+                          columns = X_train.columns)
+    return X_train, X_test
 
-def plotMutualInformation(X_train, y_train):
+
+def plotMutualInformation(X_train, X_test, y_train):
     f1 = SelectKBest(score_func=mutual_info_regression, k='all')
     f1.fit(X_train, y_train)
     f2 = SelectKBest(score_func=f_regression, k='all')
     f2.fit(X_train, y_train)
 
     fig, axs = plt.subplots(2)
+    fig.set_figheight(8)
+    fig.set_figwidth(16)
     axs[0].bar(X_train.columns, f1.scores_)
     axs[0].set_title("Mutual Information")
     axs[1].bar(X_train.columns, f2.scores_)
@@ -76,4 +86,8 @@ def plotMutualInformation(X_train, y_train):
     print("F Scores")
     for i in range(len(f2.scores_)):
         print(f"{X_train.columns[i]}: {f2.scores_[i]}")
-    return f1,f2
+
+    xtrain = X_train.drop(columns=['cut','depth','table'])
+    xtest = X_test.drop(columns=['cut','depth','table'])
+
+    return f1,f2, xtrain, xtest, 
