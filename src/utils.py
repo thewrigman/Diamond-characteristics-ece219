@@ -32,7 +32,7 @@ def scaleTrainTest(X_train, X_test):
                           columns = X_train.columns)
     xtest = pd.DataFrame(scaler.transform(X_test), \
                           columns = X_train.columns)
-    return X_train, X_test
+    return xtrain, xtest
 
 def qualtoquan(data):
     df = data.copy(deep=True)
