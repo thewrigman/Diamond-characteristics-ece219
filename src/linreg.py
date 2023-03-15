@@ -2,8 +2,6 @@ from utils import *
 from sklearn.model_selection import StratifiedKFold
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
-from sklearn.metrics import explained_variance_score
-import os
 
 if __name__ == '__main__':
 

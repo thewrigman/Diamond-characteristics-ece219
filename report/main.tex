@@ -425,9 +425,13 @@ as the price of the diamond itself increases. We also note that unlike earlier, 
 interesting, because this is the opposite of Models \texttt{1} and \texttt{2}; that is,
 this time, the model with deskewed data has the more normal distribution of residuals.\\\\
 
-Next, we test Ridge and Lasso Models iterating through alpha values $10^k$ such that $k\in \mathbb{Z}$
-and $-4 \geq k \leq 1$. We also try both the $log$(\texttt{price}) model, and try both with
-and without deskewing. 
+Next, we test the Lasso Model by iterating through alpha values $10^k$ such that 
+$k\in \mathbb{Z}$ and $-4 \geq k \leq 1$. We also try both the $log$(\texttt{price})
+model, and try both with and without deskewing. \\\\
+
+Next we test the Ridge model with all the same parameters are the Lasso model, except
+we also test whether or not the 
+
 
 
 

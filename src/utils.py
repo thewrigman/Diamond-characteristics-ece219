@@ -38,6 +38,8 @@ def loadData(filePath="../project_data/diamonds.csv", quant = False, \
 
 def nothing(x):
     return x
+def nothingtwo(x,y):
+    return x,y
 
 def scaleTrainTest(X_train, X_test):
     scaler = StandardScaler()
