@@ -16,8 +16,8 @@ if __name__ == '__main__':
     alphaGrid = [0.0001, 0.001,0.01, 0.1, 1, 10]
 
     for remColParam in remColsGrid:
+        df=loadData(quant=True,unSkew=True,remCols=remColParam)
         for func in funcs: 
-            df=loadData(quant=True,unSkew=True,remCols=remColParam)
             X = df.drop(columns=['price'])
             Y = df['price']
             f.write(f"Using {funcNames[funcs.index(func)]}")

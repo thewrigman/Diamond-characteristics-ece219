@@ -92,15 +92,16 @@ def deSkew(data):
     for x in data.columns:
         if (x == 'cut' or x == 'color' or x == 'clarity'):
             processedDF[x] = data[x]
-            # print(f"{x}: Categorical")
+            print(f"{x}: Categorical")
             continue
         if (np.abs(data[x].skew()) < 0.5):
-            # print(f"{x}: No Change")
+            print(f"{x}: No Change")
             continue
         logN = np.log(data[x])
         sqrtN = np.sqrt(data[x])
-        if (data[x]>0).all():
+        if ((data[x]>0).all()):
             boxcoxN = pd.Series(stats.boxcox(data[x])[0])
+            print(f"{x}:{boxcoxN.skew()}")
         else:
             boxcoxN = data[x]
         Ns = [sqrtN, boxcoxN, data[x], logN ]
@@ -110,30 +111,10 @@ def deSkew(data):
         processedDF[x] = Ns[bestMethod]
         print(f"{x}: {bestSkew}: {methods[bestMethod]}")
         processedDF['price'] = data['price']
+        processedDF['table'] = np.sqrt(data['table'])
     return processedDF
 
-def deSkew(data):
-    methods = ["Sqrt", "boxcox", "No Change", "log"]
-    processedDF = data.copy()
-    for x in data.columns:
-        if (x == 'cut' or x == 'color' or x == 'clarity'):
-            processedDF[x] = data[x]
-            # print(f"{x}: Categorical")
-            continue
-        if (np.abs(data[x].skew()) < 0.5):
-            # print(f"{x}: No Change")
-            continue
-        logN = np.log(data[x])
-        sqrtN = np.sqrt(data[x])
-        boxcoxN = pd.Series(stats.boxcox(data['carat'])[0])
-        Ns = [sqrtN, boxcoxN, data['x'], logN ]
-        Skews = [sqrtN.skew(), boxcoxN.skew(),data[x].skew(),logN.skew()]
-        bestSkew = min(Skews)
-        bestMethod = Skews.index(bestSkew)
-        processedDF[x] = Ns[bestMethod]
-        # print(f"{x}: {bestSkew}: {methods[bestMethod]}")
-        processedDF['price'] = data['price']
-    return processedDF
+
 
 
 def plotMutualInformation(X_train, X_test, y_train):

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.18)  15 MAR 2023 03:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.18)  15 MAR 2023 04:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -795,11 +795,11 @@ File: ../Figures/Question-1/featureprehist.png Graphic file (type png)
 <use ../Figures/Question-1/featureprehist.png>
 Package pdftex.def Info: ../Figures/Question-1/featureprehist.png  used on input line 207.
 (pdftex.def)             Requested size: 225.21626pt x 223.09845pt.
-<../Figures/Question-1/featureposthist.png, id=18, 1076.823pt x 1065.9825pt>
+<../Figures/Question-1/featureposthist.png, id=18, 1076.1003pt x 1065.9825pt>
 File: ../Figures/Question-1/featureposthist.png Graphic file (type png)
 <use ../Figures/Question-1/featureposthist.png>
 Package pdftex.def Info: ../Figures/Question-1/featureposthist.png  used on input line 214.
-(pdftex.def)             Requested size: 225.21626pt x 222.93579pt.
+(pdftex.def)             Requested size: 225.21626pt x 223.09845pt.
 [2]
 <../Figures/Question-1/clarityBox.png, id=27, 423.5022pt x 333.1647pt>
 File: ../Figures/Question-1/clarityBox.png Graphic file (type png)
@@ -903,7 +903,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  84i,12n,89p,478b,659s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on main.pdf (8 pages, 1178546 bytes).
+Output written on main.pdf (8 pages, 1196475 bytes).
 PDF statistics:
  123 PDF objects out of 1000 (max. 8388607)
  64 compressed objects within 1 object stream

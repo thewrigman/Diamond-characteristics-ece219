@@ -6,7 +6,7 @@ from sklearn.metrics import mean_squared_error
 
 if __name__ == '__main__':
 
-    f = open("lassoLogs.txt", "a")
+    f = open("polyLogs.txt", "a")
     funcNames = ["Nothing","Logrithm"]
     funcs = [nothing, np.log]
     kf = StratifiedKFold(n_splits=10, shuffle=False)
@@ -15,22 +15,22 @@ if __name__ == '__main__':
 
     for remColParam in remColsGrid:
         f.write(f"DEGREE: {9-remColParam}")
+        poly = PolynomialFeatures(degree=9-remColParam, interaction_only=False,\
+                                    include_bias=True)
+        df=loadData(quant=True,unSkew=True,remCols=remColParam)
         for func in funcs:
-            df=loadData(quant=True,unSkew=True,remCols=remColParam)
             X = df.drop(columns=['price'])
             Y = df['price']
-
-            poly = PolynomialFeatures(degree=9-remColParam, interaction_only=False,\
-                                        include_bias=True)
             X = pd.DataFrame(poly.fit_transform(X))
             
-            totalTrainRSME = 0
-            totalTestRSME = 0
+
             f.write(f"Using {funcNames[funcs.index(func)]}")
             f.write("---------------------------------------------------------\n")
             f.write(f"Num Columns Removed: {remColParam}\n")
             for alphaVal in alphaGrid:
                 f.write(f"Alpha Val: {alphaVal}\n")
+                totalTrainRSME = 0
+                totalTestRSME = 0
                 for train_index, test_index in kf.split(X, Y.to_numpy()):
                     X_train, X_test = X.iloc[train_index], X.iloc[test_index]
                     y_train, y_test = Y.iloc[train_index].apply(func), Y.iloc[test_index].apply(func)

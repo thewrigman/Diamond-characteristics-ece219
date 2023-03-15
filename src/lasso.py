@@ -15,8 +15,8 @@ if __name__ == '__main__':
 
 
     for remColParam in remColsGrid:
+        df=loadData(quant=True,unSkew=True,remCols=remColParam)
         for func in funcs:
-            df=loadData(quant=True,unSkew=True,remCols=remColParam)
             X = df.drop(columns=['price'])
             Y = df['price']
 
