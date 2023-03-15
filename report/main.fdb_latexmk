@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1678881125 "/Users/ineshchakrabarti/Documents/Diamond-characteristics-ece219/report/main.tex" "main.pdf" "main" 1678881126
+["pdflatex"] 1678884075 "/Users/ineshchakrabarti/Documents/Diamond-characteristics-ece219/report/main.tex" "main.pdf" "main" 1678884077
   "../Figures/Question-1/clarityBox.png" 1678677903 33840 11fdd7344c165316edc7a6960963e84c ""
   "../Figures/Question-1/colorBox.png" 1678859772 24026 dc469fca3d5e1490f45a850a5239897b ""
   "../Figures/Question-1/cutBox.png" 1678677896 26444 980318f95103f153bd7981b393b6a7e6 ""
@@ -11,7 +11,7 @@
   "../Figures/question4/linresplot2.png" 1678865592 106073 b8801119c55ef81bc225025af7413390 ""
   "../Figures/question4/linresplot3.png" 1678866006 162847 938e7002e832f1652ef769026ed380c8 ""
   "../Figures/question4/linresplot4.png" 1678865987 167797 66f35f1bacbd708e292af678327fef91 ""
-  "/Users/ineshchakrabarti/Documents/Diamond-characteristics-ece219/report/main.tex" 1678881059 19428 eccb9fb9f6bd18b9f0ebe0a9c6b28d97 ""
+  "/Users/ineshchakrabarti/Documents/Diamond-characteristics-ece219/report/main.tex" 1678884075 19422 6f7fc006298fef0728a2ec1348688241 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/tcrm1095.tfm" 1136768653 1536 02c06700a42be0f5a28664c7273f82e7 ""
@@ -177,8 +177,8 @@
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1647878959 4410336 7d30a02e9fa9a16d7d1f8d037ba69641 ""
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1650349847 2826451 e12a1684944c4320849879fc1085e288 ""
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
-  "main.aux" 1678881126 2024 4bb2e57ff35faf5ded2bf1f129bab457 "pdflatex"
-  "main.tex" 1678881059 19428 eccb9fb9f6bd18b9f0ebe0a9c6b28d97 ""
+  "main.aux" 1678884077 2024 4bb2e57ff35faf5ded2bf1f129bab457 "pdflatex"
+  "main.tex" 1678884075 19422 6f7fc006298fef0728a2ec1348688241 ""
   (generated)
   "main.aux"
   "main.log"

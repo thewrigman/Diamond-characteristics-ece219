@@ -25,14 +25,13 @@ if __name__ == '__main__':
             for func in funcs:
                 X = df.drop(columns=['price'])
                 Y = df['price']
-
-                
-                totalTrainRSME = 0
-                totalTestRSME = 0
                 f.write(f"Using {funcNames[funcs.index(func)]}")
                 f.write("---------------------------------------------------------\n")
                 f.write(f"Num Columns Removed: {remColParam}\n")
                 for alphaVal in alphaGrid:
+                                    
+                    totalTrainRSME = 0
+                    totalTestRSME = 0
                     f.write(f"Alpha Val: {alphaVal}\n")
                     for train_index, test_index in kf.split(X, Y.to_numpy()):
                         X_train, X_test = X.iloc[train_index], X.iloc[test_index]
