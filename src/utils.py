@@ -9,6 +9,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.feature_selection import SelectKBest
 from sklearn.feature_selection import mutual_info_regression
 from sklearn.feature_selection import f_regression
+
 ################################################################################
 sys.path.append("../project_data")
 
@@ -21,6 +22,15 @@ def loadData(filePath="../project_data/diamonds.csv", quant = False, \
     mutualInformationRanking = ['depth','table','cut','color','clarity',\
                                 'z','x','y','carat']
     df.drop(columns=mutualInformationRanking[0:remCols], inplace=True)
+    # cutLabels = ["Fair","Good","Very Good", "Premium", "Ideal"]
+    # clarityLabels = ["I1","SI2","SI1","VS2","VS1","VVS2","VVS1","IF"]
+    # colorLabels= ['J','I','H','G','F','E','D']
+    # colorOrder = CategoricalDtype(colorLabels, ordered=True)
+    # df['color'] = df['color'].astype(colorOrder)
+    # cutOrder = CategoricalDtype(cutLabels, ordered=True)
+    # df['cut']=df['cut'].astype(cutOrder)
+    # clarityOrder = CategoricalDtype(clarityLabels, ordered=True)
+    # df['clarity'] = df['clarity'].astype(clarityOrder)
     # print(mutualInformationRanking[0:remCols])
     if unSkew:
         df = deSkew(df)
@@ -87,6 +97,32 @@ def deSkew(data):
             continue
         logN = np.log(data[x])
         sqrtN = np.sqrt(data[x])
+        if (data[x]>0).all():
+            boxcoxN = pd.Series(stats.boxcox(data[x])[0])
+        else:
+            boxcoxN = data[x]
+        Ns = [sqrtN, boxcoxN, data[x], logN ]
+        Skews = [sqrtN.skew(), boxcoxN.skew(),data[x].skew(),logN.skew()]
+        bestSkew = min(Skews)
+        bestMethod = Skews.index(bestSkew)
+        processedDF[x] = Ns[bestMethod]
+        print(f"{x}: {bestSkew}: {methods[bestMethod]}")
+        processedDF['price'] = data['price']
+    return processedDF
+
+def deSkew(data):
+    methods = ["Sqrt", "boxcox", "No Change", "log"]
+    processedDF = data.copy()
+    for x in data.columns:
+        if (x == 'cut' or x == 'color' or x == 'clarity'):
+            processedDF[x] = data[x]
+            # print(f"{x}: Categorical")
+            continue
+        if (np.abs(data[x].skew()) < 0.5):
+            # print(f"{x}: No Change")
+            continue
+        logN = np.log(data[x])
+        sqrtN = np.sqrt(data[x])
         boxcoxN = pd.Series(stats.boxcox(data['carat'])[0])
         Ns = [sqrtN, boxcoxN, data['x'], logN ]
         Skews = [sqrtN.skew(), boxcoxN.skew(),data[x].skew(),logN.skew()]
@@ -96,6 +132,7 @@ def deSkew(data):
         # print(f"{x}: {bestSkew}: {methods[bestMethod]}")
         processedDF['price'] = data['price']
     return processedDF
+
 
 def plotMutualInformation(X_train, X_test, y_train):
     f1 = SelectKBest(score_func=mutual_info_regression, k='all')

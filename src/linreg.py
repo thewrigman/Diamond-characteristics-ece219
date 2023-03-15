@@ -8,7 +8,7 @@ import os
 if __name__ == '__main__':
 
     f = open("linregLog.txt", "a")
-
+    funcNames = ["Nothing","Logrithm"]
     funcs = [nothing, np.log]
     remColsGrid = [0]
     kf = StratifiedKFold(n_splits=10, shuffle=False)
@@ -23,6 +23,7 @@ if __name__ == '__main__':
             
             totalTrainRSME = 0
             totalTestRSME = 0
+            f.write(f"Using {funcNames[funcs.index(func)]}")
             f.write("---------------------------------------------------------\n")
             f.write(f"Num Columns Removed: {remColParam}\n")
             for train_index, test_index in kf.split(X, Y.to_numpy()):
@@ -32,16 +33,10 @@ if __name__ == '__main__':
 
                 reg = LinearRegression().fit(X_train,y_train)
 
-                fig,axs = plt.subplots(1)
-                axs.set_title('log Residuals for Linear Regression')
-                axs.set_ylim(bottom=-1,top=1)
-                axs.set_xlim(left=5, right=11)
-
-                visualizer = ResidualsPlot(reg, ax=axs, train_alpha=0.01, test_alpha=0.05)
-                visualizer.fit(X_train, y_train)
-                visualizer.score(X_test,y_test)
-                visualizer.show()
-                plt.savefig('linresplot.png')
+                trainPred = 0
+                testPred = 0
+                trainRSME = 0
+                testRSME = 0
 
                 if func == nothing:
                     trainPred = reg.predict(X_train)
@@ -55,10 +50,10 @@ if __name__ == '__main__':
                     trainRSME = mean_squared_error(trainPred,np.exp(y_train), squared=False)
                     testRSME = mean_squared_error(testPred, np.exp(y_test), squared=False)
 
-                print(f"Split Training RSME: {trainRSME} Testing RSME {testRSME},\n")
+                f.write(f"Split Training RSME: {trainRSME} Testing RSME {testRSME},\n")
                 totalTrainRSME += trainRSME
                 totalTestRSME += testRSME
             f.write(f"Mean TrainRSME = {totalTrainRSME/10}\n")
             f.write(f"Mean TestRSME = {totalTestRSME/10}\n")
             
-            f.close()
+    f.close()
