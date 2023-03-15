@@ -23,6 +23,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{mwe}
 \usepackage{amsthm}
 \usepackage{float}
 \usepackage[export]{adjustbox}
@@ -107,6 +110,7 @@ natural numbers based on ideality.
 
 \begin{table}[H]
     \begin{subtable}[H]{0.45\textwidth}
+        \centering
         \begin{tabular}{c l}
             \hline
             Feature & \multicolumn{1}{c}{Correlation}         \\
@@ -124,6 +128,7 @@ natural numbers based on ideality.
         \caption{Price}
         \end{subtable}
         \begin{subtable}[H]{0.45\textwidth}
+            \centering
             \begin{tabular}{c l}
                 \hline
                 Feature & \multicolumn{1}{c}{Correlation}         \\
@@ -149,7 +154,7 @@ correlation squares at the bottom right. These indicate high Pearson
 correlation coefficient between \texttt{price} and \texttt{x}, \texttt{y}, 
 \texttt{z}. Similarily, there is also a high correlation with \texttt{carat}.
 All of these suggest that the size of the diamond itself is the most significant 
-predictor as to its price. \\
+predictor as to its price. \\ 
 
 However, unexpectadly, we had a negative perason coeffciient for the quality of 
 the \texttt{cut}, \texttt{color}, and \texttt{clarity}. This was odd, so we
@@ -284,31 +289,36 @@ score.
     \begin{tabular}{c l l}
     \hline
         Feature & Mutual Information & F Score \\ \hline
-        \texttt{carat} & 1.65 & 273144 \\ \
-        \texttt{cut} & 0.0578 & 139 \\ \
-        \texttt{color} & 0.138 & 1465 \\ \
-        \texttt{clarity} & 0.221 & 1079 \\ \
-        \texttt{depth} & 0.0307 & 5.074 \\ \
-        \texttt{table} & 0.0377 & 802 \\ \
-        \texttt{x} & 1.41 & 174973 \\ \
-       \texttt{y} & 1.42 & 142130 \\ \
-        \texttt{z} & 1.36 & 138947 \\ \
+        \texttt{carat} & 1.64589286853222835 & 273144 \\ \
+        \texttt{cut} &0.058351547792578895 & 139 \\ \
+        \texttt{color} &0.13968295427702282 & 1465 \\ \
+        \texttt{clarity} & 0.21672877051000627 & 1079 \\ \
+        \texttt{depth} & 0.030486803506200033 & 5.074 \\ \
+        \texttt{table} & 0.03818752327438668 & 802 \\ \
+        \texttt{x} & 1.4058664238563194 & 174973 \\ \
+       \texttt{y} & 1.4172107199595354 & 142130 \\ \
+        \texttt{z} & 1.3569258463570115 & 138947 \\ \
     \end{tabular}
     \caption{Mutual Information and F Score Values for features}
 \end{table}
-
 It is clear by observation from Figure 3 and Table 2 that the lowest mutual 
 information is present in \texttt{depth} and \texttt{table}. It is also 
 important to note that the mutual information in \texttt{cut} is also very small. 
 This makes sense as we saw earlier that the Pearson correlation coefficient for 
 \texttt{cut} with respect to price per carat was almost zero. Similarily, the 
-Pearson correlation coefficients for depth and table were very close to zero. \\
+Pearson correlation coefficients for depth and table were very close to zero. \\ 
 
 From this point, we will be testing the regression models without these three 
 features, and with these three features and comparing the performance to 
 determine the general performance.
 
 \section*{Regression Models}
+\subsubsection*{Question 3}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+For this entire section we perform 10-fold cross validation and then measure
+the average RSME error for the training and validation sets. For the random 
+forest model we also measure "Out-of-Bag Error" and $R^2$ score. \\
+"Out-of-Bag Error" refers to 
 \subsection*{Linear Regression}
 \subsubsection*{Question 4.1}
 We begin with a simple regression, least square linear regression. Begin by 
@@ -333,8 +343,7 @@ sparse as L1 regularization linearly penalizes any non-zero parameters.
 As such, the gradient for the regularization term does not change until the 
 parameter is zero, which leads to sparsity. However, in this case, as there 
 aren't many terms, we would potenntially only have a few zero'd parameters in 
-our predictive polynomial. \\
-
+our predictive polynomial. \\ \\
 With L2 regularization, also known as a Ridge regression, we would have:
 \begin{equation}
     \argmin_{\theta} \dfrac{1}{2}||\textbf{Y}-\theta^T\hat{\textbf{X}}||^2 + 
@@ -345,9 +354,88 @@ have extremely small parameters. This is because the gradient for L2
 regularization decreases rapidly as the parameter itself becomes smaller and 
 smaller due to the parabolic nature of the term. 
 
+\subsubsection*{Question 4.2}
+
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{clll}
+        \hline
+    Model & \multicolumn{1}{c}{Description} & \multicolumn{1}{c}{Train RSME} & \multicolumn{1}{c}{Test RSME} \\
+    \hline
+    \texttt{1}     & Features processed              & 1453.1935502136905                                                       & 1459.5109959451215                                                      \\
+    \texttt{2}     & Features unprocessed            & 1216.495767837737                                                        & 1217.7987618616985                                                      \\
+    \texttt{3}     & Features processed using $log$(\texttt{price})   & 958.0855791176566                                                        & 957.5523367504156                                                       \\
+    \texttt{4}     & Features unprocessed using $log$(\texttt{price}) & 1215.167267164955                                                        & 1292.934288205552                                                      
+    \end{tabular}
+    \caption{Ordinary Least Squares Regression Model}
+    \end{table}
+Beginning with ordinary least squares regression, I first varied the 
+number of features available to the model based on mutual information and quickly 
+found that keeping all the features led to the best regression model. This makes 
+sense due to the nation of a linear regression—if a feature isn't very relevant, 
+its associated parameter will be very small—and so for Ridge and Lasso, we also
+kept all of the features. \\
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../Figures/question4/linresplot1.png}
+        \caption[Network2]%
+        {{Model \texttt{1} Residuals }}    
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.475\textwidth}  
+        \centering 
+        \includegraphics[width=\textwidth]{../Figures/question4/linresplot2.png}
+        \caption[]%
+        {Model \texttt{2} Residuals}    
+    \end{subfigure}
+    \vskip\baselineskip
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \includegraphics[width=\textwidth]{../Figures/question4/linresplot3.png}
+        \caption[]%
+        {{Model \texttt{3} $log$ Residual}}    
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \includegraphics[width=\textwidth]{../Figures/question4/linresplot4.png}
+        \caption[]%
+        {{Model \texttt{4} $log$ Residuals}}    
+    \end{subfigure}
+    \caption{Residual Plots} 
+\end{figure}
+
+
+
+
+\subsubsection*{Question 4.3}
+\subsubsection*{Question 4.4}
+
+\subsection*{Polynomial Regression}
+
+\subsection*{Neural Network}
+
+\subsection*{Random Forest}
+
+\subsection*{LightGBM, CatBoost, and Bayesian Optimization}
+\pagebreak
+\begin{center}
+    \begin{minipage}{10cm}
+    	\begin{center}
+    	\textbf{\large Project 4 Twitter Data}\\[0.1cm]
+        \textbf{Inesh Chakrabarti, Lawrence Liu, Nathan Wei}\\[0.1cm]
+    	\end{center}
+    \end{minipage}\hfill
+\end{center}
+\rule{17cm}{0.1mm}
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 

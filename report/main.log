@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.18)  13 MAR 2023 21:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.18)  15 MAR 2023 00:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -589,9 +589,34 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@thisruleclass=\count333
 \@lastruleclass=\count334
 \@thisrulewidth=\dimen323
-) (/usr/local/texlive/2022/texmf-dist/tex/latex/float/float.sty
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/mwe/mwe.sty
+Package: mwe 2018/03/30 v0.5 Package to support minimal working examples (MWE)
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/blindtext/blindtext.sty
+Package: blindtext 2012/01/06 V2.0 blindtext-Package
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+)
+\c@blindtext=\count335
+\c@Blindtext=\count336
+\c@blind@countparstart=\count337
+\blind@countxx=\count338
+\blindtext@numBlindtext=\count339
+\blind@countyy=\count340
+\c@blindlist=\count341
+\c@blindlistlevel=\count342
+\c@blindlist@level=\count343
+\blind@listitem=\count344
+\c@blind@listcount=\count345
+\c@blind@levelcount=\count346
+\blind@mathformula=\count347
+\blind@Mathformula=\count348
+\c@blind@randomcount=\count349
+\c@blind@randommax=\count350
+\c@blind@pangramcount=\count351
+\c@blind@pangrammax=\count352
+)) (/usr/local/texlive/2022/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count335
+\c@float@type=\count353
 \float@exts=\toks47
 \float@box=\box117
 \@float@everytoks=\toks48
@@ -604,7 +629,7 @@ Package: xkeyval 2020/11/20 v2.8 package option processing (HA)
 \XKV@toks=\toks49
 \XKV@tempa@toks=\toks50
 )
-\XKV@depth=\count336
+\XKV@depth=\count354
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 )) (/usr/local/texlive/2022/texmf-dist/tex/latex/adjustbox/adjcalc.sty
 Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back-ends (calc, etex, pgfmath)
@@ -632,11 +657,11 @@ File: tc-pdftex.def 2019/01/04 v2.2 Clipping driver for pdftex
 \adjbox@ptotalheight=\dimen335
  (/usr/local/texlive/2022/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
 Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
-\c@checkoddpage=\count337
+\c@checkoddpage=\count355
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/varwidth/varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
 \@vwid@box=\box120
-\sift@deathcycles=\count338
+\sift@deathcycles=\count356
 \@vwid@loff=\dimen336
 \@vwid@roff=\dimen337
 )) (./main.aux
@@ -658,32 +683,32 @@ LaTeX Warning: Label `fig:boxPlots' multiply defined.
 )
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
  (/usr/local/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count339
+\scratchcounter=\count357
 \scratchdimen=\dimen338
 \scratchbox=\box121
-\nofMPsegments=\count340
-\nofMParguments=\count341
+\nofMPsegments=\count358
+\nofMParguments=\count359
 \everyMPshowfont=\toks51
-\MPscratchCnt=\count342
+\MPscratchCnt=\count360
 \MPscratchDim=\dimen339
-\MPnumerator=\count343
-\makeMPintoPDFobject=\count344
+\MPnumerator=\count361
+\makeMPintoPDFobject=\count362
 \everyMPtoPDFconversion=\toks52
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -727,106 +752,132 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 
 Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
-(lastpage)             ! on input line 37.
+(lastpage)             ! on input line 40.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 47.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 50.
 (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 47.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 50.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (0.21284pt too wide) in paragraph at lines 50--51
+Overfull \hbox (0.21284pt too wide) in paragraph at lines 53--54
 [][] 
  []
 
 
-Overfull \hbox (48.47728pt too wide) in paragraph at lines 66--82
+Overfull \hbox (48.47728pt too wide) in paragraph at lines 69--85
 [][] 
  []
 
 <../Figures/Question-1/datasetCorrHeatmap.png, id=4, 570.2103pt x 536.2434pt>
 File: ../Figures/Question-1/datasetCorrHeatmap.png Graphic file (type png)
 <use ../Figures/Question-1/datasetCorrHeatmap.png>
-Package pdftex.def Info: ../Figures/Question-1/datasetCorrHeatmap.png  used on input line 90.
+Package pdftex.def Info: ../Figures/Question-1/datasetCorrHeatmap.png  used on input line 93.
 (pdftex.def)             Requested size: 250.24199pt x 235.33414pt.
 [1
 
 {/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <../Figures/Question-1/datasetCorrHeatmap.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 146--153
+Underfull \hbox (badness 10000) in paragraph at lines 151--158
 
  []
 
 
-Overfull \hbox (13.724pt too wide) in paragraph at lines 182--193
+Overfull \hbox (13.724pt too wide) in paragraph at lines 187--198
  [][] 
  []
 
 <../Figures/Question-1/featureprehist.png, id=17, 1076.1003pt x 1065.9825pt>
 File: ../Figures/Question-1/featureprehist.png Graphic file (type png)
 <use ../Figures/Question-1/featureprehist.png>
-Package pdftex.def Info: ../Figures/Question-1/featureprehist.png  used on input line 202.
+Package pdftex.def Info: ../Figures/Question-1/featureprehist.png  used on input line 207.
 (pdftex.def)             Requested size: 225.21626pt x 223.09845pt.
 <../Figures/Question-1/featureposthist.png, id=18, 1076.823pt x 1065.9825pt>
 File: ../Figures/Question-1/featureposthist.png Graphic file (type png)
 <use ../Figures/Question-1/featureposthist.png>
-Package pdftex.def Info: ../Figures/Question-1/featureposthist.png  used on input line 209.
+Package pdftex.def Info: ../Figures/Question-1/featureposthist.png  used on input line 214.
 (pdftex.def)             Requested size: 225.21626pt x 222.93579pt.
 [2]
 <../Figures/Question-1/clarityBox.png, id=27, 423.5022pt x 333.1647pt>
 File: ../Figures/Question-1/clarityBox.png Graphic file (type png)
 <use ../Figures/Question-1/clarityBox.png>
-Package pdftex.def Info: ../Figures/Question-1/clarityBox.png  used on input line 240.
+Package pdftex.def Info: ../Figures/Question-1/clarityBox.png  used on input line 245.
 (pdftex.def)             Requested size: 150.14671pt x 118.11415pt.
-<../Figures/Question-1/colorBox.png, id=28, 423.5022pt x 333.1647pt>
+<../Figures/Question-1/colorBox.png, id=28, 422.7795pt x 333.1647pt>
 File: ../Figures/Question-1/colorBox.png Graphic file (type png)
 <use ../Figures/Question-1/colorBox.png>
-Package pdftex.def Info: ../Figures/Question-1/colorBox.png  used on input line 247.
-(pdftex.def)             Requested size: 150.14671pt x 118.11415pt.
+Package pdftex.def Info: ../Figures/Question-1/colorBox.png  used on input line 252.
+(pdftex.def)             Requested size: 150.14671pt x 118.32259pt.
 <../Figures/Question-1/cutBox.png, id=29, 423.5022pt x 333.1647pt>
 File: ../Figures/Question-1/cutBox.png Graphic file (type png)
 <use ../Figures/Question-1/cutBox.png>
-Package pdftex.def Info: ../Figures/Question-1/cutBox.png  used on input line 254.
+Package pdftex.def Info: ../Figures/Question-1/cutBox.png  used on input line 259.
 (pdftex.def)             Requested size: 150.14671pt x 118.11415pt.
  [3 <../Figures/Question-1/featureprehist.png> <../Figures/Question-1/featureposthist.png> <../Figures/Question-1/clarityBox.png> <../Figures/Question-1/colorBox.png> <../Figures/Question-1/cutBox.png>]
 <../Figures/Question2/mi.png, id=40, 1148.3703pt x 570.933pt>
 File: ../Figures/Question2/mi.png Graphic file (type png)
 <use ../Figures/Question2/mi.png>
-Package pdftex.def Info: ../Figures/Question2/mi.png  used on input line 279.
+Package pdftex.def Info: ../Figures/Question2/mi.png  used on input line 284.
 (pdftex.def)             Requested size: 400.38872pt x 199.0629pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 300--306
+Underfull \hbox (badness 10000) in paragraph at lines 304--310
 
  []
 
 [4 <../Figures/Question2/mi.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 330--337
+Underfull \hbox (badness 10000) in paragraph at lines 340--348
 
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 373--379
+
+ []
+
+[5]
+<../Figures/question4/linresplot1.png, id=48, 557.9244pt x 366.4089pt>
+File: ../Figures/question4/linresplot1.png Graphic file (type png)
+<use ../Figures/question4/linresplot1.png>
+Package pdftex.def Info: ../Figures/question4/linresplot1.png  used on input line 384.
+(pdftex.def)             Requested size: 237.73294pt x 156.12706pt.
+<../Figures/question4/linresplot2.png, id=49, 557.9244pt x 366.4089pt>
+File: ../Figures/question4/linresplot2.png Graphic file (type png)
+<use ../Figures/question4/linresplot2.png>
+Package pdftex.def Info: ../Figures/question4/linresplot2.png  used on input line 391.
+(pdftex.def)             Requested size: 237.73294pt x 156.12706pt.
+<../Figures/question4/linresplot3.png, id=50, 541.3023pt x 366.4089pt>
+File: ../Figures/question4/linresplot3.png Graphic file (type png)
+<use ../Figures/question4/linresplot3.png>
+Package pdftex.def Info: ../Figures/question4/linresplot3.png  used on input line 398.
+(pdftex.def)             Requested size: 237.73294pt x 160.9185pt.
+<../Figures/question4/linresplot4.png, id=51, 541.3023pt x 366.4089pt>
+File: ../Figures/question4/linresplot4.png Graphic file (type png)
+<use ../Figures/question4/linresplot4.png>
+Package pdftex.def Info: ../Figures/question4/linresplot4.png  used on input line 405.
+(pdftex.def)             Requested size: 237.73294pt x 160.9185pt.
+ [6 <../Figures/question4/linresplot1.png> <../Figures/question4/linresplot2.png> <../Figures/question4/linresplot3.png> <../Figures/question4/linresplot4.png>] 
 AED: lastpage setting LastPage
-[5] (./main.aux)
+[7] (./main.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 18155 strings out of 478268
- 357079 string characters out of 5846347
- 718108 words of memory out of 5000000
- 36026 multiletter control sequences out of 15000+600000
- 475934 words of font info for 53 fonts, out of 8000000 for 9000
+ 18422 strings out of 478268
+ 362681 string characters out of 5846347
+ 722041 words of memory out of 5000000
+ 36275 multiletter control sequences out of 15000+600000
+ 477801 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,12n,89p,478b,595s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,12n,89p,478b,659s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on main.pdf (5 pages, 600304 bytes).
+Output written on main.pdf (7 pages, 1171507 bytes).
 PDF statistics:
- 99 PDF objects out of 1000 (max. 8388607)
- 53 compressed objects within 1 object stream
+ 115 PDF objects out of 1000 (max. 8388607)
+ 59 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 48 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 68 words of extra memory for PDF output out of 10000 (max. 10000000)
 
