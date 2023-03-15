@@ -36,33 +36,37 @@ if __name__ == '__main__':
                     f.write(f"Alpha Val: {alphaVal}\n")
                     totalTrainRSME = 0
                     totalTestRSME = 0
-                    for train_index, test_index in kf.split(X, Y.to_numpy()):
-                        X_train, X_test = X.iloc[train_index], X.iloc[test_index]
-                        y_train, y_test = Y.iloc[train_index].apply(func), Y.iloc[test_index].apply(func)
-                        X_train, X_test = scaleTrainTest(X_train, X_test)
+                    try:
+                        for train_index, test_index in kf.split(X, Y.to_numpy()):
+                            X_train, X_test = X.iloc[train_index], X.iloc[test_index]
+                            y_train, y_test = Y.iloc[train_index].apply(func), Y.iloc[test_index].apply(func)
+                            X_train, X_test = scaleTrainTest(X_train, X_test)
 
-                        reg = Ridge(alpha=alphaVal).fit(X_train,y_train)
-                        trainPred = 0
-                        testPred = 0
-                        trainRSME = 0
-                        testRSME = 0
+                            reg = Ridge(alpha=alphaVal).fit(X_train,y_train)
+                            trainPred = 0
+                            testPred = 0
+                            trainRSME = 0
+                            testRSME = 0
 
-                        if func == nothing:
-                            trainPred = reg.predict(X_train)
-                            testPred = reg.predict(X_test)
-                            trainRSME = mean_squared_error(trainPred, y_train, squared=False)
-                            testRSME = mean_squared_error(testPred, y_test, squared=False)
+                            if func == nothing:
+                                trainPred = reg.predict(X_train)
+                                testPred = reg.predict(X_test)
+                                trainRSME = mean_squared_error(trainPred, y_train, squared=False)
+                                testRSME = mean_squared_error(testPred, y_test, squared=False)
 
-                        else:
-                            trainPred = np.exp(reg.predict(X_train))
-                            testPred = np.exp(reg.predict(X_test))
-                            trainRSME = mean_squared_error(trainPred,np.exp(y_train), squared=False)
-                            testRSME = mean_squared_error(testPred, np.exp(y_test), squared=False)
+                            else:
+                                trainPred = np.exp(reg.predict(X_train))
+                                testPred = np.exp(reg.predict(X_test))
+                                trainRSME = mean_squared_error(trainPred,np.exp(y_train), squared=False)
+                                testRSME = mean_squared_error(testPred, np.exp(y_test), squared=False)
 
-                        f.write(f"Split Training RSME: {trainRSME} Testing RSME {testRSME},\n")
-                        totalTrainRSME += trainRSME
-                        totalTestRSME += testRSME
-                    f.write(f"Mean TrainRSME = {totalTrainRSME/10}\n")
-                    f.write(f"Mean TestRSME = {totalTestRSME/10}\n")
+                            f.write(f"Split Training RSME: {trainRSME} Testing RSME {testRSME},\n")
+                            totalTrainRSME += trainRSME
+                            totalTestRSME += testRSME
+                        f.write(f"Mean TrainRSME = {totalTrainRSME/10}\n")
+                        f.write(f"Mean TestRSME = {totalTestRSME/10}\n")
+                    except:
+                        f.write("\nOVERFLOW\n")
+                        continue
             
     f.close()

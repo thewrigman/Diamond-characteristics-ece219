@@ -1,6 +1,6 @@
 from utils import *
 from sklearn.model_selection import StratifiedKFold
-from sklearn.linear_model import Lasso
+from sklearn.linear_model import Ridge
 from sklearn.metrics import mean_squared_error
 
 if __name__ == '__main__':
@@ -39,7 +39,7 @@ if __name__ == '__main__':
                             y_train, y_test = Y.iloc[train_index].apply(func), Y.iloc[test_index].apply(func)
                             X_train, X_test = scaleParam(X_train, X_test)
 
-                            reg = Lasso(alpha=alphaVal).fit(X_train,y_train)
+                            reg = Ridge(alpha=alphaVal).fit(X_train,y_train)
                             trainPred = 0
                             testPred = 0
                             trainRSME = 0
