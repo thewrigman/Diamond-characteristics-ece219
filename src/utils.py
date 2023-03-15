@@ -26,6 +26,9 @@ def loadData(filePath="../project_data/diamonds.csv", quant = False, \
         df = deSkew(df)
     return df
 
+def nothing(x):
+    return x
+
 def scaleTrainTest(X_train, X_test):
     scaler = StandardScaler()
     xtrain = pd.DataFrame(scaler.fit_transform(X_train), \

@@ -370,13 +370,13 @@ smaller due to the parabolic nature of the term.
     \end{tabular}
     \caption{Ordinary Least Squares Regression Model}
     \end{table}
+
 Beginning with ordinary least squares regression, I first varied the 
 number of features available to the model based on mutual information and quickly 
 found that keeping all the features led to the best regression model. This makes 
 sense due to the nation of a linear regression—if a feature isn't very relevant, 
 its associated parameter will be very small—and so for Ridge and Lasso, we also
-kept all of the features. \\
-
+kept all of the features. \\\\
 \begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.475\textwidth}
@@ -408,6 +408,26 @@ kept all of the features. \\
     \end{subfigure}
     \caption{Residual Plots} 
 \end{figure}
+We then tested the linear regression model with processed data (deskewed as in 
+Question 1.2) and unprocessed data. We noted that the model without processed features
+seemed to perform much better as shown in Table 4 and visualized in Figure 5. Note that
+Model \texttt{2}'s residual histogram is distributed far more sysmtetrically than 
+Model \texttt{1}, implying that the linear regression fit better in this case.
+However, we see in both Figures 5(a) and 5(b) that Models \texttt{1} and \texttt{2} 
+predict many of the prices to be negative. \\\\
+As such, we decided to test the model by taking the natural logrithm of 
+\texttt{price} before fitting the regression. Note in Table 4 that with unprocessed 
+Features, this model performed about the same, but with processed features the RSME 
+decreased very significantly. We also see that our new $log$ residual plots seem to 
+follow a linear trend, which makes sense as this implies that the error is increasing
+as the price of the diamond itself increases. We also note that unlike earlier, Model
+\texttt{3} has normally distributed residuals while Model \texttt{4} does not. This is
+interesting, because this is the opposite of Models \texttt{1} and \texttt{2}; that is,
+this time, the model with deskewed data has the more normal distribution of residuals.\\\\
+
+Next, we test Ridge and Lasso Models iterating through alpha values $10^k$ such that $k\in \mathbb{Z}$
+and $-4 \geq k \leq 1$. We also try both the $log$(\texttt{price}) model, and try both with
+and without deskewing. 
 
 
 
