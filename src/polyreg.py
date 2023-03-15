@@ -1,6 +1,7 @@
 from utils import *
 from sklearn.model_selection import StratifiedKFold
-from sklearn.linear_model import Lasso
+from sklearn.linear_model import Ridge
+from sklearn.preprocessing import PolynomialFeatures
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import explained_variance_score
 import os
@@ -9,9 +10,9 @@ import os
 
 if __name__ == '__main__':
 
-    f = open("lassoLogs.txt", "a")
+    f = open("polyLogs.txt", "a")
 
-    remColsGrid = []
+    remColsGrid = [2,3, 4, 5, 6, 7]
     alphaGrid = [0.0001, 0.001,0.01, 0.1, 1, 10]
 
     kf = StratifiedKFold(n_splits=10, shuffle=False)
@@ -20,10 +21,16 @@ if __name__ == '__main__':
         df=loadData(quant=True,unSkew=True,remCols=remColParam)
         X = df.drop(columns=['price'])
         Y = df['price']
-        
-
         f.write("---------------------------------------------------------\n")
         f.write(f"Num Columns Removed: {remColParam}\n")
+
+
+
+        poly = PolynomialFeatures(degree=9-remColParam, \
+                                  interaction_only=False, \
+                                  include_bias=True)
+        poly.fit_transform(X)
+
         for alphaVal in alphaGrid:
             totalTrainRSME = 0
             totalTestRSME = 0
@@ -31,11 +38,13 @@ if __name__ == '__main__':
             for train_index, test_index in kf.split(X, Y):
             
                 f.write(f"Alpha Val: {alphaVal}\n")
+
                 X_train, X_test = X.iloc[train_index], X.iloc[test_index]
                 y_train, y_test = Y.iloc[train_index], Y.iloc[test_index]
                 X_train, X_test = scaleTrainTest(X_train, X_test)
+                
+                reg = Ridge(alpha=alphaVal).fit(X_train,y_train)
 
-                reg = Lasso(alpha=alphaVal).fit(X_train,y_train)
 
                 trainPred = reg.predict(X_train)
                 testPred = reg.predict(X_test)
