@@ -342,8 +342,8 @@ Note that in this case, our learned values for $\theta$ would become somewhat
 sparse as L1 regularization linearly penalizes any non-zero parameters.
 As such, the gradient for the regularization term does not change until the 
 parameter is zero, which leads to sparsity. However, in this case, as there 
-aren't many terms, we would potenntially only have a few zero'd parameters in 
-our predictive polynomial. \\ \\
+aren't many terms, we would simple disconsider features that aren't very 
+important. \\ \\
 With L2 regularization, also known as a Ridge regression, we would have:
 \begin{equation}
     \argmin_{\theta} \dfrac{1}{2}||\textbf{Y}-\theta^T\hat{\textbf{X}}||^2 + 
@@ -437,7 +437,13 @@ we also test whether or not the
 
 
 \subsubsection*{Question 4.3}
+
 \subsubsection*{Question 4.4}
+$p$-values for different features tell us the chance that a certain parameter is zero—
+that is, a parameter corresponding to a certain feature is zero. This means that if a
+p-value for a feature is very small, the feature is also probably not very important to
+the linear model. 
+
 
 \subsection*{Polynomial Regression}
 

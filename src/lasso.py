@@ -13,20 +13,21 @@ if __name__ == '__main__':
 
     alphaGrid = [0.0001, 0.001,0.01, 0.1, 1, 10]
 
-    for func in funcs:
-        for alphaVal in alphaGrid:
-            f.write(f"Alpha Val: {alphaVal}\n")
-            for remColParam in remColsGrid:
-                df=loadData(quant=True,unSkew=True,remCols=remColParam)
-                X = df.drop(columns=['price'])
-                Y = df['price']
 
-                
-                totalTrainRSME = 0
-                totalTestRSME = 0
-                f.write(f"Using {funcNames[funcs.index(func)]}")
-                f.write("---------------------------------------------------------\n")
-                f.write(f"Num Columns Removed: {remColParam}\n")
+    for remColParam in remColsGrid:
+        for func in funcs:
+            df=loadData(quant=True,unSkew=True,remCols=remColParam)
+            X = df.drop(columns=['price'])
+            Y = df['price']
+
+            
+            totalTrainRSME = 0
+            totalTestRSME = 0
+            f.write(f"Using {funcNames[funcs.index(func)]}")
+            f.write("---------------------------------------------------------\n")
+            f.write(f"Num Columns Removed: {remColParam}\n")
+            for alphaVal in alphaGrid:
+                f.write(f"Alpha Val: {alphaVal}\n")
                 for train_index, test_index in kf.split(X, Y.to_numpy()):
                     X_train, X_test = X.iloc[train_index], X.iloc[test_index]
                     y_train, y_test = Y.iloc[train_index].apply(func), Y.iloc[test_index].apply(func)

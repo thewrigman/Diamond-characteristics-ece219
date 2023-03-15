@@ -12,8 +12,8 @@ if __name__ == '__main__':
     kf = StratifiedKFold(n_splits=10, shuffle=False)
 
 
-    for func in funcs:
-        for remColParam in remColsGrid:
+    for remColParam in remColsGrid:
+        for func in funcs:
             df=loadData(quant=True,unSkew=True,remCols=remColParam)
             X = df.drop(columns=['price'])
             Y = df['price']

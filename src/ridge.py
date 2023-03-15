@@ -5,7 +5,7 @@ from sklearn.metrics import mean_squared_error
 
 if __name__ == '__main__':
 
-    f = open("lassoLogs.txt", "a")
+    f = open("ridgeLogs.txt", "a")
     funcNames = ["Nothing","Logrithm"]
     funcs = [nothing, np.log]
     scaleornot = [nothingtwo, scaleTrainTest]
@@ -15,16 +15,16 @@ if __name__ == '__main__':
 
     alphaGrid = [0.0001, 0.001,0.01, 0.1, 1, 10]
 
-    for func in funcs:
-        for alphaVal in alphaGrid:
-            f.write(f"Alpha Val: {alphaVal}\n")
-            for remColParam in remColsGrid:
-                df=loadData(quant=True,unSkew=True,remCols=remColParam)
-                X = df.drop(columns=['price'])
-                Y = df['price']
-                f.write(f"Using {funcNames[funcs.index(func)]}")
-                f.write("---------------------------------------------------------\n")
-                f.write(f"Num Columns Removed: {remColParam}\n")
+    for remColParam in remColsGrid:
+        for func in funcs: 
+            df=loadData(quant=True,unSkew=True,remCols=remColParam)
+            X = df.drop(columns=['price'])
+            Y = df['price']
+            f.write(f"Using {funcNames[funcs.index(func)]}")
+            f.write("---------------------------------------------------------\n")
+            f.write(f"Num Columns Removed: {remColParam}\n")
+            for alphaVal in alphaGrid:
+                f.write(f"Alpha Val: {alphaVal}\n")
                 for scaleParam in scaleornot:
                     f.write(f"{scaleNames[scaleornot.index(scaleParam)]}")
                     totalTrainRSME = 0
