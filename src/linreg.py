@@ -3,6 +3,7 @@ from sklearn.model_selection import StratifiedKFold
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 
+
 if __name__ == '__main__':
 
     f = open("linregLog.txt", "a")
@@ -21,8 +22,6 @@ if __name__ == '__main__':
             for func in funcs:
                 X = df.drop(columns=['price'])
                 Y = df['price']
-
-                
                 totalTrainRSME = 0
                 totalTestRSME = 0
                 f.write(f"Using {funcNames[funcs.index(func)]}")

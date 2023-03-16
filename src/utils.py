@@ -21,19 +21,9 @@ def loadData(filePath="../project_data/diamonds.csv", quant = False, \
         df, ppc = qualtoquan(df)
     mutualInformationRanking = ['depth','table','cut','color','clarity',\
                                 'z','x','y','carat']
-    df.drop(columns=mutualInformationRanking[0:remCols], inplace=True)
-    # cutLabels = ["Fair","Good","Very Good", "Premium", "Ideal"]
-    # clarityLabels = ["I1","SI2","SI1","VS2","VS1","VVS2","VVS1","IF"]
-    # colorLabels= ['J','I','H','G','F','E','D']
-    # colorOrder = CategoricalDtype(colorLabels, ordered=True)
-    # df['color'] = df['color'].astype(colorOrder)
-    # cutOrder = CategoricalDtype(cutLabels, ordered=True)
-    # df['cut']=df['cut'].astype(cutOrder)
-    # clarityOrder = CategoricalDtype(clarityLabels, ordered=True)
-    # df['clarity'] = df['clarity'].astype(clarityOrder)
-    # print(mutualInformationRanking[0:remCols])
     if unSkew:
         df = deSkew(df)
+    df.drop(columns=mutualInformationRanking[0:remCols], inplace=True)
     return df
 
 def nothing(x):
@@ -95,7 +85,11 @@ def deSkew(data):
             # print(f"{x}: Categorical")
             continue
         if (x=='table'):
-            processedDF[x] = np.sqrt(data[x])
+            processedDF[x] = np.log(data[x])
+            print(f"\n\nPLEASE WORK {processedDF[x].skew()}")
+            continue
+        if (x=='price'):
+            continue
         if (np.abs(data[x].skew()) < 0.5):
             print(f"{x}: No Change")
             continue
@@ -112,7 +106,6 @@ def deSkew(data):
         bestMethod = Skews.index(bestSkew)
         processedDF[x] = Ns[bestMethod]
         print(f"{x}: {bestSkew}: {methods[bestMethod]}")
-    processedDF['price'] = data['price']    
     return processedDF
 
 

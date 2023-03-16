@@ -1,10 +1,10 @@
 # Fdb version 3
-["pdflatex"] 1678884075 "/Users/ineshchakrabarti/Documents/Diamond-characteristics-ece219/report/main.tex" "main.pdf" "main" 1678884077
+["pdflatex"] 1678923621 "/Users/ineshchakrabarti/Documents/Diamond-characteristics-ece219/report/main.tex" "main.pdf" "main" 1678923623
   "../Figures/Question-1/clarityBox.png" 1678677903 33840 11fdd7344c165316edc7a6960963e84c ""
   "../Figures/Question-1/colorBox.png" 1678859772 24026 dc469fca3d5e1490f45a850a5239897b ""
   "../Figures/Question-1/cutBox.png" 1678677896 26444 980318f95103f153bd7981b393b6a7e6 ""
   "../Figures/Question-1/datasetCorrHeatmap.png" 1678676942 84928 0cc200b84e09b4977a675222e57c4b77 ""
-  "../Figures/Question-1/featureposthist.png" 1678881124 220555 2d949cdb5155b2e51d7e6ac2ff0052ee ""
+  "../Figures/Question-1/featureposthist.png" 1678923621 221449 07f4ac2e50ab6baf26d11af6f0e8483e ""
   "../Figures/Question-1/featureprehist.png" 1678765837 177443 b11b6eee0d41c1ae701ecf7df09620ff ""
   "../Figures/Question2/mi.png" 1678700888 32593 c0a40d6a5225f6257fcda9f020b2d8ee ""
   "../Figures/question4/linresplot1.png" 1678865681 99041 67479c98d021cd8a1fc10f831a89e596 ""
@@ -177,7 +177,7 @@
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1647878959 4410336 7d30a02e9fa9a16d7d1f8d037ba69641 ""
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1650349847 2826451 e12a1684944c4320849879fc1085e288 ""
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
-  "main.aux" 1678884077 2024 4bb2e57ff35faf5ded2bf1f129bab457 "pdflatex"
+  "main.aux" 1678923623 2024 4bb2e57ff35faf5ded2bf1f129bab457 "pdflatex"
   "main.tex" 1678884075 19422 6f7fc006298fef0728a2ec1348688241 ""
   (generated)
   "main.aux"

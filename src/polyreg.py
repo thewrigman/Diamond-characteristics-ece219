@@ -6,13 +6,14 @@ from sklearn.metrics import mean_squared_error
 
 if __name__ == '__main__':
 
-    f = open("polyLogs.txt", "a")
+    f = open("polyLogs2.txt", "a")
     funcNames = ["Nothing","Logrithm"]
     funcs = [nothing, np.log]
+    # funcs = [nothing]
     kf = StratifiedKFold(n_splits=10, shuffle=False)
     remColsGrid = [3, 4, 5, 6, 7]
     alphaGrid = [0.0001, 0.001,0.01, 0.1, 1, 10]
-    unSkewGrid = [True, False]
+    unSkewGrid = [True]
     for unSkewParam in unSkewGrid:
         if unSkewParam:
             f.write(f"Deskewed\n")
@@ -27,8 +28,6 @@ if __name__ == '__main__':
                 X = df.drop(columns=['price'])
                 Y = df['price']
                 X = pd.DataFrame(poly.fit_transform(X))
-                
-
                 f.write(f"Using {funcNames[funcs.index(func)]}")
                 f.write("---------------------------------------------------------\n")
                 f.write(f"Num Columns Removed: {remColParam}\n")
@@ -47,6 +46,7 @@ if __name__ == '__main__':
                             testPred = 0
                             trainRSME = 0
                             testRSME = 0
+
 
                             if func == nothing:
                                 trainPred = reg.predict(X_train)
