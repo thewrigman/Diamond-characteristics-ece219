@@ -6,55 +6,51 @@ from sklearn.ensemble import RandomForestRegressor
 
 if __name__ == '__main__':
 
-    f = open("ranforLogs2.txt", "a")
-    funcNames = ["Nothing","Logrithm"]
-    funcs = [nothing, np.log]
-    remColsGrid = [0, 2, 4, 6]
+    f = open("ranforLogs.txt", "a")
+    max_feature = ["sqrt","log2",None]
+    max_depths = [4, 20,100,200]
+    max_trees = [10,50,100,200]
     kf = StratifiedKFold(n_splits=10, shuffle=False)
-    unSkewGrid = [True, False]
-    for unSkewParam in unSkewGrid:
-        if unSkewParam:
-            f.write(f"Deskewed\n")
-        else:
-            f.write(f"Not deskewed\n")
-        for remColParam in remColsGrid:
-            df=loadData(quant=True,unSkew=unSkewParam,remCols=remColParam)
-            for func in funcs:
-                X = df.drop(columns=['price'])
-                Y = df['price']
+    unSkewParam = True
+    remColParam = 0
+    
+
+    df=loadData(quant=True,unSkew=unSkewParam,remCols=remColParam)
+    X = df.drop(columns=['price'])
+    Y = df['price']
+
+
+    f.write("---------------------------------------------------------\n")
+    for maxFeature in max_feature:
+        for maxDepth in max_depths:
+            for maxTree in max_trees:
                 totalTrainRSME = 0
                 totalTestRSME = 0
-                f.write(f"Using {funcNames[funcs.index(func)]}")
-                f.write("---------------------------------------------------------\n")
-                f.write(f"Num Columns Removed: {remColParam}\n")
+                totalOOB = 0
                 for train_index, test_index in kf.split(X, Y.to_numpy()):
                     X_train, X_test = X.iloc[train_index], X.iloc[test_index]
-                    y_train, y_test = Y.iloc[train_index].apply(func), Y.iloc[test_index].apply(func)
+                    y_train, y_test = Y.iloc[train_index], Y.iloc[test_index]
                     X_train, X_test = scaleTrainTest(X_train, X_test)
-
-                    reg = RandomForestRegressor(n_estimators=100,max_features=0.3).fit(X_train,y_train)
-
+                    reg = RandomForestRegressor(n_estimators=maxTree,
+                                                max_features=maxFeature,
+                                                max_depth = maxDepth,
+                                                oob_score=True).fit(X_train,y_train)
                     trainPred = 0
                     testPred = 0
                     trainRSME = 0
                     testRSME = 0
 
-                    if func == nothing:
-                        trainPred = reg.predict(X_train)
-                        testPred = reg.predict(X_test)
-                        trainRSME = mean_squared_error(trainPred, y_train, squared=False)
-                        testRSME = mean_squared_error(testPred, y_test, squared=False)
-
-                    else:
-                        trainPred = np.exp(reg.predict(X_train))
-                        testPred = np.exp(reg.predict(X_test))
-                        trainRSME = mean_squared_error(trainPred,np.exp(y_train), squared=False)
-                        testRSME = mean_squared_error(testPred, np.exp(y_test), squared=False)
-
-                    f.write(f"Split Training RSME: {trainRSME} Testing RSME {testRSME},\n")
+                    trainPred = reg.predict(X_train)
+                    testPred = reg.predict(X_test)
+                    trainRSME = mean_squared_error(trainPred, y_train, squared=False)
+                    testRSME = mean_squared_error(testPred, y_test, squared=False)
+                    oob = reg.oob_score_
+                    f.write(f"Split Training RSME: {trainRSME} Testing RSME {testRSME}, OOB Error: {oob}\n")
                     totalTrainRSME += trainRSME
                     totalTestRSME += testRSME
+                    totalOOB += oob
                 f.write(f"Mean TrainRSME = {totalTrainRSME/10}\n")
                 f.write(f"Mean TestRSME = {totalTestRSME/10}\n")
+                f.write(f"Mean OOB Error = {totalOOB/10}\n")
             
     f.close()

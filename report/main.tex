@@ -453,10 +453,51 @@ this time, the model with deskewed data has the more normal distribution of resi
 
 Next, we test the Lasso Model by iterating through alpha values $10^k$ such that 
 $k\in \mathbb{Z}$ and $-4 \geq k \leq 1$. We also try both the $log$(\texttt{price})
-model, and try both with and without deskewing. \\\\
+model, and try both with and without deskewing. As seen in Table 5, we see that the best performming 
+model is the same as for ordinary least squares regression, as well as the general trends across 
+the models. The only difference in this case that we see is that leaving the features unprocessed 
+while also taking the $log(\texttt{price})$ leads to the error blowing up. We note that this issue 
+persists for all future models referred to in this report as well. 
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{clcll}
+        \hline
+    Model & \multicolumn{1}{c}{Description} & \multicolumn{1}{c}{Best Alpha} & \multicolumn{1}{c}{Best Train RSME} & \multicolumn{1}{c}{Best Test RSME} \\
+    \hline
+    \texttt{1}     & Features processed       & 1       & 1434.8446180295655                                                     & 1443.270394653097                                                      \\
+    \texttt{2}     & Features unprocessed    & 1        & 1216.5716991188874                                                      & 1217.1322328759766
+    \\
+    \texttt{3}     & Features processed using $log$(\texttt{price})  & 0.001 & 953.1890102312589                                                     & 952.4417958988445                                                       \\
+    \texttt{4}     & Features unprocessed using $log$(\texttt{price}) & 10 &  4270.277347211739                                                   & 4270.276711329372                                                   
+    \end{tabular}
+    \caption{Lasso Regression Model}
+\end{table}
+
 
 Next we test the Ridge model with all the same parameters are the Lasso model, except
-we also test whether or not the 
+we also test whether or not feature standardization is palying a role in improving 
+the model performance. Note the description column has been left out as it is the same as the previous 
+two models.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{cllll}
+        \hline
+    Model & \multicolumn{1}{c}{Best Alpha} & \multicolumn{1}{c}{Best Train RSME} & \multicolumn{1}{c}{Best Test RSME} \\
+    \hline
+    \texttt{1}     & Features processed       & 1       & 1434.8446180295655                                                     & 1443.270394653097                                                      \\
+    \texttt{2}     & Features unprocessed    & 1        & 1216.5716991188874                                                      & 1217.1322328759766
+    \\
+    \texttt{3}     & Features processed using $log$(\texttt{price})  & 0.001 & 953.1890102312589                                                     & 952.4417958988445                                                       \\
+    \texttt{4}     & Features unprocessed using $log$(\texttt{price}) & 10 &  4270.277347211739                                                   & 4270.276711329372                                                   
+    \end{tabular}
+    \caption{Lasso Regression Model}
+\end{table}
+
+
+
+
 
 
 
@@ -539,6 +580,9 @@ on the model, as we are effectively reducing the complexity and "number of neuro
 to change the depth by adjusting the minimum number of samples needed in order to split into multiple leaves. 
 
 \subsubsection*{Quesiton 7.2}
+\subsubsection*{Questino 7.3}
+\subsubsection*{Question 7.4}
+"Out-of-Bag Error" refers to 
 
 \subsection*{LightGBM, CatBoost, and Bayesian Optimization}
 \pagebreak
