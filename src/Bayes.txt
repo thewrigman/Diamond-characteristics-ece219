@@ -1,0 +1,31 @@
+carat:0.020450070764268666
+carat: 0.020450070764268666: boxcox
+depth: No Change
+
+
+PLEASE WORK 0.5993289324435086
+x: No Change
+y: 0.3636482008742052: Sqrt
+z: 0.0139742634447758: Sqrt
+val score: -592.498771288194
+best params: OrderedDict([('scaler', StandardScaler()), ('tree__learning_rate', 0.3567909852775578), ('tree__max_depth', 3), ('tree__min_split_gain', 0.11439104645067763), ('tree__n_estimators', 200), ('tree__num_leaves', 169)])
+carat:0.020450070764268666
+carat: 0.020450070764268666: boxcox
+depth: No Change
+
+
+PLEASE WORK 0.5993289324435086
+x: No Change
+y: 0.3636482008742052: Sqrt
+z: 0.0139742634447758: Sqrt
+val score: -597.2664506714136
+best params: OrderedDict([('scaler', StandardScaler()), ('tree__learning_rate', 0.22378791060545938), ('tree__max_depth', 4), ('tree__min_split_gain', 0.27274452903643503), ('tree__n_estimators', 200), ('tree__num_leaves', 12)])
+carat:0.020450070764268666
+carat: 0.020450070764268666: boxcox
+depth: No Change
+
+
+PLEASE WORK 0.5993289324435086
+x: No Change
+y: 0.3636482008742052: Sqrt
+z: 0.0139742634447758: Sqrt
