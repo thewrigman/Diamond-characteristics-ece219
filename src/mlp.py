@@ -8,7 +8,7 @@ if __name__ == '__main__':
 
     f = open("mlpLogs.txt", "a")
     
-    sizeLayer = [50,100,200]
+    sizeLayer = [50.,100.,200.]
     alphas = [0.01, 0.1]
     numLayers = [4,8,12]
     kf = StratifiedKFold(n_splits=10, shuffle=False)
@@ -43,7 +43,7 @@ if __name__ == '__main__':
                                     learning_rate='adaptive',
                                     momentum=0.9,
                                     early_stopping=True,
-                                    validation_fraction=0.1)
+                                    validation_fraction=0.1).fit(X_train,y_train)
                     
                     trainPred = 0
                     testPred = 0
