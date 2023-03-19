@@ -11,7 +11,7 @@ if __name__ == '__main__':
     funcs = [nothing, np.log]
     # funcs = [nothing]
     kf = StratifiedKFold(n_splits=10, shuffle=False)
-    remColsGrid = [3, 4, 5, 6, 7]
+    remColsGrid = [7,6,5,4,3]
     alphaGrid = [0.0001, 0.001,0.01, 0.1, 1, 10]
     unSkewGrid = [True]
     for unSkewParam in unSkewGrid:

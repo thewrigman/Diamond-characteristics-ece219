@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.18)  15 MAR 2023 16:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.18)  19 MAR 2023 08:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -680,6 +680,9 @@ LaTeX Warning: Label `sub@fig:colorBox' multiply defined.
 
 LaTeX Warning: Label `fig:boxPlots' multiply defined.
 
+
+LaTeX Warning: Label `table1' multiply defined.
+
 )
 \openout1 = `main.aux'.
 
@@ -786,110 +789,125 @@ Underfull \hbox (badness 10000) in paragraph at lines 151--158
  []
 
 
-Overfull \hbox (13.724pt too wide) in paragraph at lines 187--198
+Overfull \hbox (13.724pt too wide) in paragraph at lines 187--197
  [][] 
  []
 
 <../Figures/Question-1/featureprehist.png, id=17, 1076.1003pt x 1065.9825pt>
 File: ../Figures/Question-1/featureprehist.png Graphic file (type png)
 <use ../Figures/Question-1/featureprehist.png>
-Package pdftex.def Info: ../Figures/Question-1/featureprehist.png  used on input line 207.
+Package pdftex.def Info: ../Figures/Question-1/featureprehist.png  used on input line 206.
 (pdftex.def)             Requested size: 225.21626pt x 223.09845pt.
 <../Figures/Question-1/featureposthist.png, id=18, 1076.1003pt x 1065.9825pt>
 File: ../Figures/Question-1/featureposthist.png Graphic file (type png)
 <use ../Figures/Question-1/featureposthist.png>
-Package pdftex.def Info: ../Figures/Question-1/featureposthist.png  used on input line 214.
+Package pdftex.def Info: ../Figures/Question-1/featureposthist.png  used on input line 213.
 (pdftex.def)             Requested size: 225.21626pt x 223.09845pt.
 [2]
 <../Figures/Question-1/clarityBox.png, id=27, 423.5022pt x 333.1647pt>
 File: ../Figures/Question-1/clarityBox.png Graphic file (type png)
 <use ../Figures/Question-1/clarityBox.png>
-Package pdftex.def Info: ../Figures/Question-1/clarityBox.png  used on input line 245.
+Package pdftex.def Info: ../Figures/Question-1/clarityBox.png  used on input line 244.
 (pdftex.def)             Requested size: 150.14671pt x 118.11415pt.
 <../Figures/Question-1/colorBox.png, id=28, 422.7795pt x 333.1647pt>
 File: ../Figures/Question-1/colorBox.png Graphic file (type png)
 <use ../Figures/Question-1/colorBox.png>
-Package pdftex.def Info: ../Figures/Question-1/colorBox.png  used on input line 252.
+Package pdftex.def Info: ../Figures/Question-1/colorBox.png  used on input line 251.
 (pdftex.def)             Requested size: 150.14671pt x 118.32259pt.
 <../Figures/Question-1/cutBox.png, id=29, 423.5022pt x 333.1647pt>
 File: ../Figures/Question-1/cutBox.png Graphic file (type png)
 <use ../Figures/Question-1/cutBox.png>
-Package pdftex.def Info: ../Figures/Question-1/cutBox.png  used on input line 259.
+Package pdftex.def Info: ../Figures/Question-1/cutBox.png  used on input line 258.
 (pdftex.def)             Requested size: 150.14671pt x 118.11415pt.
- [3 <../Figures/Question-1/featureprehist.png> <../Figures/Question-1/featureposthist.png> <../Figures/Question-1/clarityBox.png> <../Figures/Question-1/colorBox.png> <../Figures/Question-1/cutBox.png>]
+
+Underfull \hbox (badness 10000) in paragraph at lines 266--293
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 266--293
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 266--293
+
+ []
+
+[3 <../Figures/Question-1/featureprehist.png> <../Figures/Question-1/featureposthist.png> <../Figures/Question-1/clarityBox.png> <../Figures/Question-1/colorBox.png> <../Figures/Question-1/cutBox.png>]
 <../Figures/Question2/mi.png, id=40, 1148.3703pt x 570.933pt>
 File: ../Figures/Question2/mi.png Graphic file (type png)
 <use ../Figures/Question2/mi.png>
-Package pdftex.def Info: ../Figures/Question2/mi.png  used on input line 284.
+Package pdftex.def Info: ../Figures/Question2/mi.png  used on input line 310.
 (pdftex.def)             Requested size: 400.38872pt x 199.0629pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 304--310
-
- []
-
-[4 <../Figures/Question2/mi.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 340--348
+ [4]
+Underfull \hbox (badness 10000) in paragraph at lines 330--336
 
  []
 
-<../Figures/question4/linresplot1.png, id=45, 557.9244pt x 366.4089pt>
+[5 <../Figures/Question2/mi.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 366--374
+
+ []
+
+<../Figures/question4/linresplot1.png, id=48, 557.9244pt x 366.4089pt>
 File: ../Figures/question4/linresplot1.png Graphic file (type png)
 <use ../Figures/question4/linresplot1.png>
-Package pdftex.def Info: ../Figures/question4/linresplot1.png  used on input line 384.
+Package pdftex.def Info: ../Figures/question4/linresplot1.png  used on input line 410.
 (pdftex.def)             Requested size: 237.73294pt x 156.12706pt.
-<../Figures/question4/linresplot2.png, id=46, 557.9244pt x 366.4089pt>
+<../Figures/question4/linresplot2.png, id=49, 557.9244pt x 366.4089pt>
 File: ../Figures/question4/linresplot2.png Graphic file (type png)
 <use ../Figures/question4/linresplot2.png>
-Package pdftex.def Info: ../Figures/question4/linresplot2.png  used on input line 391.
+Package pdftex.def Info: ../Figures/question4/linresplot2.png  used on input line 417.
 (pdftex.def)             Requested size: 237.73294pt x 156.12706pt.
-<../Figures/question4/linresplot3.png, id=47, 541.3023pt x 366.4089pt>
+<../Figures/question4/linresplot3.png, id=50, 541.3023pt x 366.4089pt>
 File: ../Figures/question4/linresplot3.png Graphic file (type png)
 <use ../Figures/question4/linresplot3.png>
-Package pdftex.def Info: ../Figures/question4/linresplot3.png  used on input line 398.
+Package pdftex.def Info: ../Figures/question4/linresplot3.png  used on input line 424.
 (pdftex.def)             Requested size: 237.73294pt x 160.9185pt.
-<../Figures/question4/linresplot4.png, id=48, 541.3023pt x 366.4089pt>
+<../Figures/question4/linresplot4.png, id=51, 541.3023pt x 366.4089pt>
 File: ../Figures/question4/linresplot4.png Graphic file (type png)
 <use ../Figures/question4/linresplot4.png>
-Package pdftex.def Info: ../Figures/question4/linresplot4.png  used on input line 405.
+Package pdftex.def Info: ../Figures/question4/linresplot4.png  used on input line 431.
 (pdftex.def)             Requested size: 237.73294pt x 160.9185pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 374--410
+Underfull \hbox (badness 10000) in paragraph at lines 400--436
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 374--410
+Underfull \hbox (badness 10000) in paragraph at lines 400--436
 
  []
 
-[5]
-Underfull \hbox (badness 10000) in paragraph at lines 411--427
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 411--427
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 437--453
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 411--427
-
- []
-
-[6 <../Figures/question4/linresplot1.png> <../Figures/question4/linresplot2.png> <../Figures/question4/linresplot3.png> <../Figures/question4/linresplot4.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 428--431
+Underfull \hbox (badness 10000) in paragraph at lines 437--453
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 428--431
+Underfull \hbox (badness 10000) in paragraph at lines 437--453
 
  []
 
-[7] 
+
+Underfull \hbox (badness 10000) in paragraph at lines 454--457
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 454--457
+
+ []
+
+[7 <../Figures/question4/linresplot1.png> <../Figures/question4/linresplot2.png> <../Figures/question4/linresplot3.png> <../Figures/question4/linresplot4.png>] [8] [9] 
 AED: lastpage setting LastPage
-[8] (./main.aux)
+[10] (./main.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -897,16 +915,16 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  18422 strings out of 478268
  362681 string characters out of 5846347
- 722043 words of memory out of 5000000
+ 722048 words of memory out of 5000000
  36275 multiletter control sequences out of 15000+600000
  477801 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,12n,89p,478b,659s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on main.pdf (8 pages, 1197133 bytes).
+Output written on main.pdf (10 pages, 1204080 bytes).
 PDF statistics:
- 123 PDF objects out of 1000 (max. 8388607)
- 64 compressed objects within 1 object stream
+ 129 PDF objects out of 1000 (max. 8388607)
+ 68 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  68 words of extra memory for PDF output out of 10000 (max. 10000000)
 

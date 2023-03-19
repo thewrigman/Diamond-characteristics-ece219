@@ -42,6 +42,7 @@ Split Training RSME: 214.83812361454991 Testing RSME 587.664487735042,
 Split Training RSME: 217.34851894559978 Testing RSME 555.4222008272977,
 Mean TrainRSME = 216.31080760723245
 Mean TestRSME = 572.4698860567739
+
 Using Logrithm---------------------------------------------------------
 Num Columns Removed: 0
 Split Training RSME: 227.3669166069131 Testing RSME 589.6171785540613,
