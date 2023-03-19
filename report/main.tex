@@ -550,7 +550,13 @@ when we analyzed Figure 3 in Question 1.3; we find that keeping \texttt{carat} c
 higher values for \texttt{clarity} and \texttt{color} do in fact increase the price of the diamond. This confirms 
 that the misleading trends were simply due to the rarity of larger diamonds as we have better \texttt{clarity} and 
 \texttt{color}. Thus, although \texttt{caraat} is by far the most important singular feature, we find that when used 
-in conjunction, \texttt{clarity} and \texttt{color} can be interprretted to have some meaning as well. 
+in conjunction, \texttt{clarity} and \texttt{color} can be interprretted to have some meaning as well. \\\\
+
+Interestingly, features like \texttt{x}, \texttt{y}, and \texttt{z} that had high mutual information 
+were not included in the most salient feature terms. I concluded that this was because 
+the information from \texttt{x}, \texttt{y}, and \texttt{z} is encompassed within 
+\texttt{carat} and the singular dimension doesn't tell us as much about the diamond 
+as the weight. 
 
 
 \subsubsection*{Question 5.2}
@@ -563,15 +569,78 @@ model seems to perform better than the basic linear regression, but worse than t
 linear regression model. This suggests that the relationship between price and the features has 
 some relationship that is more logrithmic, or one that becomes flatter over time. As such, we cannot 
 properly explain this relationship with just a polynomial regression. Therefore, we once again 
-took the $log(\texttt{price})$ in this section and had better results as shown in Table .
+took the $log(\texttt{price})$ in this section and had better results as shown in Table. An 
+odd finding was that training RMSE was always higher than test RSME after some amount 
+of tuning, and adding any more layers or decreasing regularization would quickly reduce 
+test accuracy as well. 
+
+\begin{table}[ht]
+    \centering
+        \label{table1} 
+        \begin{tabular}{ccll} 
+        \hline
+        Degree & Best Alpha & Training Accuracy & Testing Accuracy \\
+        \hline 
+        1 & \\
+        2 & \\
+        3 & \\
+        4 & \\
+        5 & \\
+        6 &
+        \end{tabular}
+        \caption{Polynomial Regression Performance}
+        \end{table}
+
+
 \subsection*{Neural Network}
 \subsubsection*{Question 6.1}
-We operated under the assumption that deeper networks would be better than wider networks, but we also 
-tested this idea with two seperately tuned connected neural networks. Their architectures are shown in 
-Figure , while their loss curves and perofrmance are in Figure and Table. The logic applied towards this 
-tuning of the neural network hyperparameters was quite simple—in the cases of overfitting, we increased 
-alpha, a regularization parameter, applied an inverse scaling learning rate, and applied early stopping. 
-We also increase regularization in the first model by using half the batch size. 
+We tested three different classes of networks: Wide and Shallow, Wide and Deep, 
+Narrow and Deep. Imperically, from previous experience, Narrow and Deep performs 
+best, but we found that the performance of both deep models were about the same after some 
+tuning of hyperparameters to deal with overfitting in the Wide and Deep Neural 
+Network. Note that we used a batchsize of 200 for all of the models, with 
+learning rate of 0.0001, adam as the optimizer, and RELU as the activation 
+function between layers. We implemented early stopping along with momentum, and 
+for the two deep networks had a inverse scaling learning rate. 
+\begin{table}[ht]
+    \centering
+        \label{table1} 
+        \begin{tabular}{cccll} 
+        \hline
+        Model & Num Layers & Hidden Layer Size & Training Accuracy & Testing Accuracy \\
+        \hline 
+        Wide and Deep & 8 & 100 &567.115903287934 &528.0967129827669\\
+        Wide and Shallow & \\
+        Narrow and Deep & 
+        \end{tabular}
+        \caption{Multilayer Perceptron Performance}
+        \end{table}
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../Figures/mlp/mlp1.png}
+        \caption{Wide and Deep}
+        \label{fig:clarityBox}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../Figures/Question-1/colorBox.png}
+        \caption{Color}
+        \label{fig:colorBox}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../Figures/Question-1/cutBox.png}
+        \caption{Cut}
+        \label{fig:cutBox}
+    \end{subfigure}
+       \caption{Loss Curves}
+       \label{fig:boxPlots}
+\end{figure}
+
 
 \subsubsection*{Question 6.2}
 The peformance is significantly better than the linear regression, although the time to train for even a singular 
@@ -590,6 +659,89 @@ as they are carried over fro one layer onto the next layer. We also face the iss
 where every hidden layer's input distribution has to change every time a parameter updates in the previous layer 
 leading to extremely slow training that is not possible without good parameter initializations. 
 \subsection*{Random Forest}
+We began by noting that increasing the number of trees always increased the overall performance.
+I did not increase the number of trees beyond 200 because of the time it took to run, but 
+the ensembling nature of having more trees is what leads to better performance. We do not 
+provide justification in ways of a graph for this but rather have our tables at the end of this 
+report to justify this answer. Similarily, we will assume for the
+following plot that using no function for max features is best.
+\begin{figure}[H]
+    \centering
+        \includegraphics[width=0.4\textwidth]{../Figures/treePlot.png}
+       \caption{Random Forest Loss vs Max Depth}
+       \label{fig:boxPlots}
+\end{figure}
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{llll}
+    \hline
+        Max Depth & OOB Error & Test RSME & Train RSME \\ \hline
+        4 & 0.9244489827 & 1093.68057 & 1090.131115 \\
+        20 & 0.9819323954 & 534.4829574 & 208.1138089 \\
+        100 & 0.9818788398 & 534.7722537 & 198.3342015 \\
+        200 & 0.9818834686 & 533.9593106 & 198.5191772
+    \end{tabular}
+\end{table}
+We thus find that our best model is that of max depth 100, no function for max features, and 
+200 trees. 
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|l|l|l|l|l|l|}
+    \hline
+        Max Feature Function & Max Depth & Number of Trees & OOB & Test RSME & Train RSME \\ \hline
+        Sqrt & 4 & 10 & 0.888507545 & 1159.959716 & 1152.848945 \\ \hline
+        Sqrt & ~ & 50 & 0.9171313504 & 1140.563857 & 1134.275963 \\ \hline
+        Sqrt & ~ & 100 & 0.9191165157 & 1129.346395 & 1123.858801 \\ \hline
+        Sqrt & ~ & 200 & 0.9188510884 & 1134.089141 & 1128.10018 \\ \hline
+        Sqrt & 20 & 10 & 0.9538068624 & 574.710234 & 270.643099 \\ \hline
+        Sqrt & ~ & 50 & 0.9801764999 & 548.0368293 & 234.7525084 \\ \hline
+        Sqrt & ~ & 100 & 0.9810110937 & 544.337696 & 229.7962548 \\ \hline
+        Sqrt & ~ & 200 & 0.9813714943 & 541.9969573 & 227.829509 \\ \hline
+        Sqrt & 100 & 10 & 0.952074361 & 584.8709897 & 251.5979829 \\ \hline
+        Sqrt & ~ & 50 & 0.9801804006 & 548.2237846 & 209.7595994 \\ \hline
+        Sqrt & ~ & 100 & 0.9809620903 & 543.0336185 & 204.1539647 \\ \hline
+        Sqrt & ~ & 200 & 0.9813119671 & 540.9774691 & 201.4067505 \\ \hline
+        Sqrt & 200 & 10 & 0.9524553607 & 581.9463059 & 249.9683452 \\ \hline
+        Sqrt & ~ & 50 & 0.9800355171 & 549.180965 & 210.5645585 \\ \hline
+        Sqrt & ~ & 100 & 0.9808838459 & 545.553042 & 204.4457473 \\ \hline
+        log & ~ & 200 & 0.9813853014 & 543.6600276 & 201.2575916 \\ \hline
+        log & 4 & 10 & 0.8883054168 & 1157.457366 & 1150.956749 \\ \hline
+        log & ~ & 50 & 0.917231479 & 1140.118984 & 1133.194543 \\ \hline
+        log & ~ & 100 & 0.919291226 & 1129.281357 & 1122.782338 \\ \hline
+        log & ~ & 200 & 0.918920738 & 1134.014515 & 1127.519151 \\ \hline
+        log & 20 & 10 & 0.9527329601 & 576.6097058 & 271.1668142 \\ \hline
+        log & ~ & 50 & 0.9802277603 & 545.6922031 & 234.9126577 \\ \hline
+        log & ~ & 100 & 0.9809636018 & 543.2411822 & 230.2138979 \\ \hline
+        log & ~ & 200 & 0.981371479 & 541.1313816 & 227.5167292 \\ \hline
+        log & 100 & 10 & 0.9508821205 & 582.2038386 & 251.3593473 \\ \hline
+        log & ~ & 50 & 0.9801277275 & 547.6444163 & 209.9927989 \\ \hline
+        log & ~ & 100 & 0.9809551574 & 542.9125848 & 203.8702072 \\ \hline
+        log & ~ & 200 & 0.9813605768 & 541.0191076 & 201.3292414 \\ \hline
+        log & 200 & 10 & 0.9515704197 & 578.0423422 & 250.3845501 \\ \hline
+        log & ~ & 50 & 0.9801532065 & 551.3455731 & 210.0763147 \\ \hline
+        log & ~ & 100 & 0.9810080433 & 544.0830238 & 203.7966355 \\ \hline
+        log & ~ & 200 & 0.9813756034 & 542.2773565 & 201.1595134 \\ \hline
+        none & 4 & 10 & 0.9023035324 & 1097.538401 & 1094.664785 \\ \hline
+        none & ~ & 50 & 0.9241238739 & 1093.927796 & 1090.392225 \\ \hline
+        none & ~ & 100 & 0.9244161312 & 1092.986609 & 1089.681183 \\ \hline
+        none & ~ & 200 & 0.9244489827 & 1093.68057 & 1090.131115 \\ \hline
+        none & 20 & 10 & 0.9564292592 & 557.9466554 & 242.4763037 \\ \hline
+        none & ~ & 50 & 0.9812088369 & 537.8696376 & 214.0872931 \\ \hline
+        none & ~ & 100 & 0.9817084472 & 535.6808118 & 210.1387262 \\ \hline
+        none & ~ & 200 & 0.9819323954 & 534.4829574 & 208.1138089 \\ \hline
+        none & 100 & 10 & 0.9566362724 & 558.9295058 & 235.81578 \\ \hline
+        none & ~ & 50 & 0.9811235288 & 537.2029647 & 204.7660947 \\ \hline
+        none & ~ & 100 & 0.9816142316 & 535.4227102 & 200.3857282 \\ \hline
+        none & ~ & 200 & 0.9818788398 & 534.7722537 & 198.3342015 \\ \hline
+        none & 200 & 10 & 0.956278795 & 561.0361648 & 236.9948476 \\ \hline
+        none & ~ & 50 & 0.9811670519 & 540.1592345 & 205.2858802 \\ \hline
+        none & ~ & 100 & 0.9816291442 & 535.0693099 & 200.8452532 \\ \hline
+        none & ~ & 200 & 0.9818834686 & 533.9593106 & 198.5191772 \\ \hline
+    \end{tabular}
+\end{table}
+
 \subsubsection*{Quesiton 7.1}
 Maximum number of features has a regulariation effect on the model. This is simply because we are considering less 
 features, and disregarding the features that aren't as useful. As such, we have a simpler model and thus 
@@ -608,7 +760,28 @@ at each of its nodes into a larger non-linear structure. Thus, our final decisio
 boundary is somewhat more complex, and can in fact be non-linear. Logically, we see
 the decision tree itself can overfit any dataset y setting harsher and harsher if-statements,
 meaning it can perfectly model/overfit any training set. 
-\subsubsection*{Questino 7.3}
+\subsubsection*{Question 7.3}
+
+\begin{figure}[H]
+    \centering
+        \includegraphics[width=0.8\textwidth]{../Figures/tree.png}
+    \hfill
+       \caption{Random 4 depth Tree from Random Forest}
+       \label{fig:boxPlots}
+\end{figure}
+
+We see that the feature selected for branching at the root node is \texttt{carat} as 
+expected. We noted earlier that \texttt{carat} was the most important feature, as it 
+corresponds to the literal weight and size of the diamond. It also has the highest mutual 
+information with \texttt{price} of all the features. It does agree with our earlier 
+findings somewhat. We see that \texttt{clarity} and \texttt{color} become the most common
+classifier. This generally makes sense from a human standpoint as it suggests that 
+the model is getting a general ballpark of how much the diamond is worth from its weight 
+and then proceding to use the finer features to price the diamond. The only exception 
+is the apperance of the \texttt{x} node, by note that this too is closely correlated with 
+\texttt{carat}. The reason we do not see more is because the infromation of \texttt{x} is
+mostly encompassed within \texttt{carat}, as we simply care about size of the diamond. 
+
 
 \subsubsection*{Question 7.4}
 To explain OOB error, let us first examine how a Random Forest algorithm with
@@ -628,9 +801,32 @@ Note that $R^2$ for non-linear predictors like random forest can in fact be nega
 
 \subsection*{LightGBM, CatBoost, and Bayesian Optimization}
 \subsubsection*{Question 8.1}
+The hyperparameters we chose to vary were:
+\begin{enumerate}
+\item[1.] \texttt{Tree_Learning_Rate} drawn from a uniform distribution betweeen 0.005 and 5
+\item[2.] \texttt{Treee__max_depth} drawn as an integer value between 2 and 32 includisve
+\item[3.] \texttt{tree__min_split_gain} drawn betweeen 0 and 0.3 
+\item[4.] \texttt{tree__n_estimators} drawn as an integer value betweeen 100 and 200 inclusive
+\item[5.] \texttt{reg_alpha} drawn as an integer value between 0 and 0.1
+\end{enumerate}
+We of course used \texttt{n_jobs} in order to paralalize the task. We used these 
+hyperparameters, as the others did not seem very useful—we included regularization 
+parameters, along with parameters like learning rate and max depth that 
+allow us to make sure the model is actually learning (we don't over regularize).
 \subsubsection*{Question 8.2}
-We conducted a 
+Our best model corresponding to the hyperparameters refferred to in the previous question 
+used (Note the order will be the same as above):
+\begin{enumerate}
+\item[1.] \texttt{Tree_Learning_Rate} is 0.356790985277557
+\item[2.] \texttt{Treee__max_depth} is 3
+\item[3.] \texttt{tree__min_split_gain} is  0.11439104645067763
+\item[4.] \texttt{tree__n_estimators} is 200
+\item[5.] \texttt{reg_alpha} is 0.0723842703480234
+\end{enumerate}
+Note it had RMSE 592.498771288194
+
 \subsubsection*{Question 8.3}
+We see that the best performance is provided by 
 \pagebreak
 \begin{center}
     \begin{minipage}{10cm}
