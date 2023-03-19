@@ -348,7 +348,15 @@ To explain OOB error, let us first examine how a Random Forest algorithm with
 bootstrapping works. If we bootstrap, we sample the training data, and then use 
 this small sample of the training data in order to train a single decision tree model.
 We can then ensemble many such trees, all trained with different samples of the original
-data. OOB error refers to the average error in the prediction of 
+data. OOB error is calculated on the training set, where we calculate the average error 
+of the trees' predictions on data that was not included in its bootstrap sample. \\\\
+$R^2$ score is normally used as the coefficient of determination—that is—the proportion
+of the variation in the labels that can be predicted from the features. For random 
+forests, we compute it as:
+\[R^2 = 1- \dfrac{\text{MSE}}{\text{Var}(\text{labels})}
+    \]
+Note that $R^2$ for non-linear predictors like random forest can in fact be negative.
+
 \subsection*{Linear Regression}
 \subsubsection*{Question 4.1}
 We begin with a simple regression, least square linear regression. Begin by 
@@ -595,13 +603,33 @@ on the model, as we are effectively reducing the complexity and "number of neuro
 to change the depth by adjusting the minimum number of samples needed in order to split into multiple leaves. 
 
 \subsubsection*{Quesiton 7.2}
+Random forests are essentially combining small piecewise linear decision boundaries 
+at each of its nodes into a larger non-linear structure. Thus, our final decision 
+boundary is somewhat more complex, and can in fact be non-linear. Logically, we see
+the decision tree itself can overfit any dataset y setting harsher and harsher if-statements,
+meaning it can perfectly model/overfit any training set. 
 \subsubsection*{Questino 7.3}
+
 \subsubsection*{Question 7.4}
-"Out-of-Bag Error" refers to 
+To explain OOB error, let us first examine how a Random Forest algorithm with
+bootstrapping works. If we bootstrap, we sample the training data, and then use 
+this small sample of the training data in order to train a single decision tree model.
+We can then ensemble many such trees, all trained with different samples of the original
+data. OOB error is calculated on the training set, where we calculate the average error 
+of the trees' predictions on data that was not included in its bootstrap sample. \\\\
+$R^2$ score is normally used as the coefficient of determination—that is—the proportion
+of the variation in the labels that can be predicted from the features. For random 
+forests, we compute it as:
+\[R^2 = 1- \dfrac{\text{MSE}}{\text{Var}(\text{labels})}
+    \]
+Note that $R^2$ for non-linear predictors like random forest can in fact be negative.
+
+
 
 \subsection*{LightGBM, CatBoost, and Bayesian Optimization}
 \subsubsection*{Question 8.1}
 \subsubsection*{Question 8.2}
+We conducted a 
 \subsubsection*{Question 8.3}
 \pagebreak
 \begin{center}
