@@ -344,7 +344,11 @@ determine the general performance.
 For this entire section we perform 10-fold cross validation and then measure
 the average RSME error for the training and validation sets. For the random 
 forest model we also measure "Out-of-Bag Error" and $R^2$ score. \\
-"Out-of-Bag Error" refers to 
+To explain OOB error, let us first examine how a Random Forest algorithm with
+bootstrapping works. If we bootstrap, we sample the training data, and then use 
+this small sample of the training data in order to train a single decision tree model.
+We can then ensemble many such trees, all trained with different samples of the original
+data. OOB error refers to the average error in the prediction of 
 \subsection*{Linear Regression}
 \subsubsection*{Question 4.1}
 We begin with a simple regression, least square linear regression. Begin by 
@@ -380,7 +384,7 @@ have extremely small parameters. This is because the gradient for L2
 regularization decreases rapidly as the parameter itself becomes smaller and 
 smaller due to the parabolic nature of the term. 
 
-\subsubsection*{Question 4.2}
+\subsubsection*{Question 4.2 and 4.3}
 
 
 \begin{table}[H]
@@ -474,36 +478,34 @@ persists for all future models referred to in this report as well.
     \caption{Lasso Regression Model}
 \end{table}
 
-
 Next we test the Ridge model with all the same parameters are the Lasso model, except
 we also test whether or not feature standardization is palying a role in improving 
 the model performance. Note the description column has been left out as it is the same as the previous 
-two models.
+two models. We see in Table 6 that contrary to our expectations, scaling/standardizing the features did not 
+seem to play a very big roll in improving the model. This was surprising, given how a linear regression is 
+usually sensitive to changes in magnitude (making scaling beneficial). 
 
 \begin{table}[H]
     \centering
-    \begin{tabular}{cllll}
+    \begin{tabular}{cccll}
         \hline
-    Model & \multicolumn{1}{c}{Best Alpha} & \multicolumn{1}{c}{Best Train RSME} & \multicolumn{1}{c}{Best Test RSME} \\
+    Model & Standardized &Best Alpha & \multicolumn{1}{c}{Best Train RSME} & \multicolumn{1}{c}{Best Test RSME} \\
     \hline
-    \texttt{1}     & Features processed       & 1       & 1434.8446180295655                                                     & 1443.270394653097                                                      \\
-    \texttt{2}     & Features unprocessed    & 1        & 1216.5716991188874                                                      & 1217.1322328759766
-    \\
-    \texttt{3}     & Features processed using $log$(\texttt{price})  & 0.001 & 953.1890102312589                                                     & 952.4417958988445                                                       \\
-    \texttt{4}     & Features unprocessed using $log$(\texttt{price}) & 10 &  4270.277347211739                                                   & 4270.276711329372                                                   
+    \texttt{1}   & Yes      & 10       & 1434.8513489310335                                                   &  1442.9008267138393                                                    \\
+    \texttt{1}   & No        & 10       & 1435.8556914721148                                                  & 1442.1066793353307                                                  \\
+    \texttt{2}   & Yes        & 10      & 1216.6969576343665                                                   & 1217.9346926613257                                                     \\
+    \texttt{2}   & No        & 1      & 1216.4978665798574                                               & 1217.7934651327528                                                   \\
+    \texttt{3}   & Yes        & 0.001       & 964.0857752044615                                                    &  963.5016367407248                                                    \\
+    \texttt{3}   & No       & 0.0001       & 963.4272568650325                                                   &962.8249050664665                                                     \\
+    \texttt{4}   & Yes        & 1       & 1215.16766015031                                                   & 56321.703744924875                                                     \\
+    \texttt{4}   & No       & 1       & 1215.1676667481079                                                  & 56321.78526878937                                                    
     \end{tabular}
-    \caption{Lasso Regression Model}
+    \caption{Ridge Regression Model}
 \end{table}
 
+Ultimately, we find that our best performing model was Lasso Model \texttt{3} with an alpha value of 
+0.001, as this gave us the lowest RSME of all our linear regression models.
 
-
-
-
-
-
-
-
-\subsubsection*{Question 4.3}
 
 \subsubsection*{Question 4.4}
 $p$-values for different features tell us the chance that a certain parameter is zero—
@@ -544,12 +546,25 @@ in conjunction, \texttt{clarity} and \texttt{color} can be interprretted to have
 
 
 \subsubsection*{Question 5.2}
-In order to test which degree of polynomial was best, we tested integer values between 2 and 6, different alpha
-values for the Ridge regularization model, and also predicing \texttt{price} vs $\log(\texttt{price})$
-
+In order to test which degree of polynomial was best, we tested integer values between 2 and 6 along with 
+different alpha values for the Ridge regularization. We quickly notice that the higher degree polynomials 
+are almost definitely overfitting, with extremely low training error and extremely high validation error.
+This makes sense, as higher order polynomials are less generalized in shape, and tend to try to fit the data 
+more "perfectly"—in other words, it's simply a more complicated model. We also see that the 
+model seems to perform better than the basic linear regression, but worse than the $log(\texttt{price})$ 
+linear regression model. This suggests that the relationship between price and the features has 
+some relationship that is more logrithmic, or one that becomes flatter over time. As such, we cannot 
+properly explain this relationship with just a polynomial regression. Therefore, we once again 
+took the $log(\texttt{price})$ in this section and had better results as shown in Table .
 \subsection*{Neural Network}
 \subsubsection*{Question 6.1}
-The architecture for our model is demonstrated in Figure . Attach plots of loss curve
+We operated under the assumption that deeper networks would be better than wider networks, but we also 
+tested this idea with two seperately tuned connected neural networks. Their architectures are shown in 
+Figure , while their loss curves and perofrmance are in Figure and Table. The logic applied towards this 
+tuning of the neural network hyperparameters was quite simple—in the cases of overfitting, we increased 
+alpha, a regularization parameter, applied an inverse scaling learning rate, and applied early stopping. 
+We also increase regularization in the first model by using half the batch size. 
+
 \subsubsection*{Question 6.2}
 The peformance is significantly better than the linear regression, although the time to train for even a singular 
 model is almost as long as the entire grid search for linear or Ridge regression. The difference in all of the models
@@ -585,6 +600,9 @@ to change the depth by adjusting the minimum number of samples needed in order t
 "Out-of-Bag Error" refers to 
 
 \subsection*{LightGBM, CatBoost, and Bayesian Optimization}
+\subsubsection*{Question 8.1}
+\subsubsection*{Question 8.2}
+\subsubsection*{Question 8.3}
 \pagebreak
 \begin{center}
     \begin{minipage}{10cm}
@@ -595,6 +613,7 @@ to change the depth by adjusting the minimum number of samples needed in order t
     \end{minipage}\hfill
 \end{center}
 \rule{17cm}{0.1mm}
+
 
 
 
