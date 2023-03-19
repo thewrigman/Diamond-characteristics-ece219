@@ -560,33 +560,29 @@ as the weight.
 
 
 \subsubsection*{Question 5.2}
-In order to test which degree of polynomial was best, we tested integer values between 2 and 6 along with 
-different alpha values for the Ridge regularization. We quickly notice that the higher degree polynomials 
+In order to test and find the best polynomial degreee, we tested integer values between 2 and 6 inclusive while 
+also testing different alpha values between $10^{-3}$ and $10^2$ for the Ridge regularization. We quickly notice that the higher degree polynomials 
 are almost definitely overfitting, with extremely low training error and extremely high validation error.
 This makes sense, as higher order polynomials are less generalized in shape, and tend to try to fit the data 
-more "perfectly"—in other words, it's simply a more complicated model. We also see that the 
-model seems to perform better than the basic linear regression, but worse than the $log(\texttt{price})$ 
-linear regression model. This suggests that the relationship between price and the features has 
-some relationship that is more logrithmic, or one that becomes flatter over time. As such, we cannot 
-properly explain this relationship with just a polynomial regression. Therefore, we once again 
-took the $log(\texttt{price})$ in this section and had better results as shown in Table. An 
-odd finding was that training RMSE was always higher than test RSME after some amount 
-of tuning, and adding any more layers or decreasing regularization would quickly reduce 
-test accuracy as well. 
+more "perfectly"—in other words, it's simply a more complicated model. We see that the model is performing much better than 
+the linear regression almost universally, as the best linear model, which involved taking the logrithm of \texttt{price} 
+is still worse than the best polynonimal model. Note that the best polynomial model was of 5th degree. Similarily note that 
+our alpha constant values are very high, meaning that we've had to add extremely high amounts of regularization to our model because of the
+overfitting nature of polynomial regression. Note that the non-linear models so far have performed best—including the  $log(\texttt{price})$ 
+linear regression and now the polynomial regression. 
 
-\begin{table}[ht]
+\begin{table}[H]
     \centering
         \label{table1} 
-        \begin{tabular}{ccll} 
+        \begin{tabular}{cccll} 
         \hline
-        Degree & Best Alpha & Training Accuracy & Testing Accuracy \\
+        Degree & log vs raw Price & Best Alpha & Training RMSE & Testing RMSE \\
         \hline 
-        1 & \\
-        2 & \\
-        3 & \\
-        4 & \\
-        5 & \\
-        6 &
+        2 & Raw & 10 & 900.3779319488907 & 932.1444972450224 \\
+        3 & Raw & 10& 877.2503108198043 & 973.1487742305775 \\
+        4 & Raw & 10 & 860.7751295043215 & 1050.162477614935\\
+        5 & Raw & 10 & 616.7122497398685 & 904.9899982439823\\
+        6 & Log & 0.001 & 363.5332636480957 & 999.3493546367806
         \end{tabular}
         \caption{Polynomial Regression Performance}
         \end{table}
