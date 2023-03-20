@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.18)  19 MAR 2023 13:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.18)  19 MAR 2023 14:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -939,12 +939,12 @@ Overfull \hbox (20.9561pt too wide) in paragraph at lines 476--486
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 544--554
+Underfull \hbox (badness 10000) in paragraph at lines 545--555
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 544--554
+Underfull \hbox (badness 10000) in paragraph at lines 545--555
 
  []
 
@@ -952,34 +952,36 @@ Underfull \hbox (badness 10000) in paragraph at lines 544--554
 <../Figures/mlp/mlp1.png, id=67, 497.2176pt x 362.0727pt>
 File: ../Figures/mlp/mlp1.png Graphic file (type png)
 <use ../Figures/mlp/mlp1.png>
-Package pdftex.def Info: ../Figures/mlp/mlp1.png  used on input line 618.
+Package pdftex.def Info: ../Figures/mlp/mlp1.png  used on input line 619.
 (pdftex.def)             Requested size: 150.14671pt x 109.33534pt.
-File: ../Figures/Question-1/colorBox.png Graphic file (type png)
-<use ../Figures/Question-1/colorBox.png>
-Package pdftex.def Info: ../Figures/Question-1/colorBox.png  used on input line 625.
-(pdftex.def)             Requested size: 150.14671pt x 118.32259pt.
-File: ../Figures/Question-1/cutBox.png Graphic file (type png)
-<use ../Figures/Question-1/cutBox.png>
-Package pdftex.def Info: ../Figures/Question-1/cutBox.png  used on input line 632.
-(pdftex.def)             Requested size: 150.14671pt x 118.11415pt.
- [9] [10 <../Figures/mlp/mlp1.png>]
-<../Figures/treePlot.png, id=75, 404.712pt x 312.2064pt>
+<../Figures/mlp/mlp2.png, id=68, 497.2176pt x 362.0727pt>
+File: ../Figures/mlp/mlp2.png Graphic file (type png)
+<use ../Figures/mlp/mlp2.png>
+Package pdftex.def Info: ../Figures/mlp/mlp2.png  used on input line 626.
+(pdftex.def)             Requested size: 150.14671pt x 109.33534pt.
+<../Figures/mlp/mlp3.png, id=69, 497.2176pt x 362.0727pt>
+File: ../Figures/mlp/mlp3.png Graphic file (type png)
+<use ../Figures/mlp/mlp3.png>
+Package pdftex.def Info: ../Figures/mlp/mlp3.png  used on input line 633.
+(pdftex.def)             Requested size: 150.14671pt x 109.33534pt.
+ [9] [10 <../Figures/mlp/mlp1.png> <../Figures/mlp/mlp2.png> <../Figures/mlp/mlp3.png>]
+<../Figures/treePlot.png, id=79, 404.712pt x 312.2064pt>
 File: ../Figures/treePlot.png Graphic file (type png)
 <use ../Figures/treePlot.png>
-Package pdftex.def Info: ../Figures/treePlot.png  used on input line 666.
+Package pdftex.def Info: ../Figures/treePlot.png  used on input line 671.
 (pdftex.def)             Requested size: 200.19054pt x 154.43546pt.
 
 
-LaTeX Warning: Float too large for page by 8.08572pt on input line 739.
+LaTeX Warning: Float too large for page by 8.08572pt on input line 744.
 
 [11 <../Figures/treePlot.png>]
-<../Figures/tree.png, id=80, 8774.7825pt x 1367.1075pt>
+<../Figures/tree.png, id=84, 8774.7825pt x 1367.1075pt>
 File: ../Figures/tree.png Graphic file (type png)
 <use ../Figures/tree.png>
-Package pdftex.def Info: ../Figures/tree.png  used on input line 763.
+Package pdftex.def Info: ../Figures/tree.png  used on input line 768.
 (pdftex.def)             Requested size: 400.38872pt x 62.37245pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 783--792
+Underfull \hbox (badness 10000) in paragraph at lines 788--797
 
  []
 
@@ -991,18 +993,18 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 18445 strings out of 478268
- 363218 string characters out of 5846347
+ 18459 strings out of 478268
+ 363572 string characters out of 5846347
  735056 words of memory out of 5000000
- 36293 multiletter control sequences out of 15000+600000
+ 36305 multiletter control sequences out of 15000+600000
  477801 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,12n,89p,478b,659s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on main.pdf (15 pages, 1974600 bytes).
+Output written on main.pdf (15 pages, 2014054 bytes).
 PDF statistics:
- 151 PDF objects out of 1000 (max. 8388607)
+ 155 PDF objects out of 1000 (max. 8388607)
  79 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 83 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 93 words of extra memory for PDF output out of 10000 (max. 10000000)
 

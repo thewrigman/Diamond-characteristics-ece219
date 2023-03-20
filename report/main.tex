@@ -519,7 +519,8 @@ Ultimately, we find that our best performing model was Lasso Model \texttt{3} wi
 $p$-values for different features tell us the chance that a certain parameter is zero—
 that is, a parameter corresponding to a certain feature is zero. This means that if a
 p-value for a feature is very small, the feature is also probably not very important to
-the linear model. 
+the linear model. In other words, the features with the smallest $p$-values would be the
+most significant features. 
 
 
 \subsection*{Polynomial Regression}
@@ -595,7 +596,7 @@ Narrow and Deep. Imperically, from previous experience, Narrow and Deep performs
 best, but we found that the performance of both deep models were about the same after some 
 tuning of hyperparameters to deal with overfitting in the Wide and Deep Neural 
 Network. Note that we used a batchsize of 200 for all of the models, with 
-learning rate of 0.0001, adam as the optimizer, and RELU as the activation 
+learning rate of 0.0001, ADAM as the optimizer, and RELU as the activation 
 function between layers. We implemented early stopping along with momentum, and 
 for the two deep networks had a inverse scaling learning rate. 
 \begin{table}[ht]
@@ -605,9 +606,9 @@ for the two deep networks had a inverse scaling learning rate.
         \hline
         Model & Num Layers & Hidden Layer Size & Training Accuracy & Testing Accuracy \\
         \hline 
-        Wide and Deep & 8 & 100 &567.115903287934 &528.0967129827669\\
-        Wide and Shallow & \\
-        Narrow and Deep & 
+        Wide and Deep & 8 & 300 &567.115903287934 &528.0967129827669\\
+        Wide and Shallow & 4 & 300 & 537.6275755105262 & 540.1376603260633 \\
+        Narrow and Deep & 10 & 50 & 538.343589560268, & 538.9664914806564
         \end{tabular}
         \caption{Multilayer Perceptron Performance}
         \end{table}
@@ -622,26 +623,30 @@ for the two deep networks had a inverse scaling learning rate.
     \hfill
     \begin{subfigure}[b]{0.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../Figures/Question-1/colorBox.png}
+        \includegraphics[width=\textwidth]{../Figures/mlp/mlp2.png}        
         \caption{Color}
         \label{fig:colorBox}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{../Figures/Question-1/cutBox.png}
+        \includegraphics[width=\textwidth]{../Figures/mlp/mlp3.png}
         \caption{Cut}
         \label{fig:cutBox}
     \end{subfigure}
        \caption{Loss Curves}
        \label{fig:boxPlots}
 \end{figure}
+Note in this case that our Narrow and Deep network has the least neurons by far, so it is the 
+preffered network—it also trained the fastest by far. 
 
 
 \subsubsection*{Question 6.2}
 The peformance is significantly better than the linear regression, although the time to train for even a singular 
-model is almost as long as the entire grid search for linear or Ridge regression. The difference in all of the models
-used can be found in Table where we have compiled the best models of each type. 
+model is almost as long as the entire grid search for linear or Ridge regression. Note that the relationship 
+between our features and  \texttt{price} is probably not linear, so it is also difficult to model it with 
+a simple linear regression. Meanwhile, a multilayer perceptron with multiple layers is able to construct much more 
+complex non-linear functions due to the multiple layers with weights and biases. 
 \subsubsection*{Question 6.3}
 We did not use an activation function for the output from the last fully connected layer. Initially, we were planning on 
 simply taking the output from the fully connected layer as we were just interested in the raw numebrs predicted by 
@@ -738,7 +743,7 @@ We thus find that our best model is that of max depth 100, no function for max f
     \end{tabular}
 \end{table}
 
-\subsubsection*{Quesiton 7.1}
+\subsubsection*{Question 7.1}
 Maximum number of features has a regulariation effect on the model. This is simply because we are considering less 
 features, and disregarding the features that aren't as useful. As such, we have a simpler model and thus 
 setting this maximum number of features for the tree to split on allows for regularization. However, eliminating
@@ -750,7 +755,7 @@ for the individual trees to actually train on. Lastly, the depth of each tree ob
 on the model, as we are effectively reducing the complexity and "number of neurons" of the model. We can also try 
 to change the depth by adjusting the minimum number of samples needed in order to split into multiple leaves. 
 
-\subsubsection*{Quesiton 7.2}
+\subsubsection*{Question 7.2}
 Random forests are essentially combining small piecewise linear decision boundaries 
 at each of its nodes into a larger non-linear structure. Thus, our final decision 
 boundary is somewhat more complex, and can in fact be non-linear. Logically, we see
@@ -814,7 +819,7 @@ Our best model corresponding to the hyperparameters refferred to in the previous
 used (Note the order will be the same as above):
 \begin{enumerate}
 \item[1.] \texttt{Tree_Learning_Rate} is 0.356790985277557
-\item[2.] \texttt{Treee__max_depth} is 3
+\item[2.] \texttt{Tree__max_depth} is 3
 \item[3.] \texttt{tree__min_split_gain} is  0.11439104645067763
 \item[4.] \texttt{tree__n_estimators} is 200
 \item[5.] \texttt{reg_alpha} is 0.0723842703480234
@@ -822,7 +827,18 @@ used (Note the order will be the same as above):
 Note it had RMSE 592.498771288194
 
 \subsubsection*{Question 8.3}
-We see that the best performance is provided by 
+Increasing \texttt{tree__n_estimators} is very important for better performance as it 
+allows us to essentialyl ensemble more models. The more models we have voting, the higher 
+our accuracy will be (provided each is given a reasonable amount of data to train). 
+Increasing \texttt{Tree__max_depth} makes our model more complex and more able to model 
+more non-linear loss curves; decreasing it on the other hand acts as a regularization effect as we 
+are forcefully decreasing the complexity of the model by limiting it to only a certain number of 
+splits. The \texttt{tree__min_split_gain} refers to the minimum loss reduction that we need to 
+split a node—higher values create a sort of regularization effect as we don't allow the model to 
+completely reduce the training error. Learning rate is a very standard parameters, allowing us to modify 
+the SGD learning rate of the algorithm. A learning rate too low will cause us to get stuck in local 
+minima while one that is too high may shoot past the solution. Choosing a good value for learning rate is 
+important for converging to the solution fast. 
 \pagebreak
 \begin{center}
     \begin{minipage}{10cm}
