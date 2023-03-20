@@ -663,7 +663,7 @@ leading to extremely slow training that is not possible without good parameter i
 We began by noting that increasing the number of trees always increased the overall performance.
 I did not increase the number of trees beyond 200 because of the time it took to run, but 
 the ensembling nature of having more trees is what leads to better performance. We do not 
-provide justification in ways of a graph for this but rather have our tables at the end of this 
+provide justification in ways of a graph for this but rather have Table 10 at the end of this 
 report to justify this answer. Similarily, we will assume for the
 following plot that using no function for max features is best.
 \begin{figure}[H]
@@ -741,6 +741,7 @@ We thus find that our best model is that of max depth 100, no function for max f
         none & ~ & 100 & 0.9816291442 & 535.0693099 & 200.8452532 \\ \hline
         none & ~ & 200 & 0.9818834686 & 533.9593106 & 198.5191772 \\ \hline
     \end{tabular}
+    \caption {Random Forest Model Parameters}
 \end{table}
 
 \subsubsection*{Question 7.1}
@@ -839,17 +840,6 @@ completely reduce the training error. Learning rate is a very standard parameter
 the SGD learning rate of the algorithm. A learning rate too low will cause us to get stuck in local 
 minima while one that is too high may shoot past the solution. Choosing a good value for learning rate is 
 important for converging to the solution fast. 
-\pagebreak
-\begin{center}
-    \begin{minipage}{10cm}
-    	\begin{center}
-    	\textbf{\large Project 4 Twitter Data}\\[0.1cm]
-        \textbf{Inesh Chakrabarti, Lawrence Liu, Nathan Wei}\\[0.1cm]
-    	\end{center}
-    \end{minipage}\hfill
-\end{center}
-\rule{17cm}{0.1mm}
-
 
 
 
